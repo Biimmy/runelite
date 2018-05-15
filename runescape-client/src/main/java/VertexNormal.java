@@ -4,35 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("dv")
 @Implements("VertexNormal")
 public class VertexNormal {
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 51653105
+   @ObfuscatedName("ep")
+   @ObfuscatedSignature(
+      signature = "Lft;"
    )
-   public static int field1931;
-   @ObfuscatedName("o")
+   static class157 field1697;
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 909698261
+      intValue = 1111459119
    )
    @Export("x")
    int x;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -517319707
+      intValue = 1093572535
    )
    @Export("y")
    int y;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = -987713281
+      intValue = 557806907
    )
    @Export("z")
    int z;
-   @ObfuscatedName("d")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = -514131039
+      intValue = -1099818287
    )
    @Export("magnitude")
    int magnitude;
@@ -41,7 +41,7 @@ public class VertexNormal {
    }
 
    @ObfuscatedSignature(
-      signature = "(Lea;)V"
+      signature = "(Ldv;)V"
    )
    VertexNormal(VertexNormal var1) {
       this.x = var1.x;
@@ -50,12 +50,13 @@ public class VertexNormal {
       this.magnitude = var1.magnitude;
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("ia")
    @ObfuscatedSignature(
-      signature = "(ZZI)Lll;",
-      garbageValue = "1690207821"
+      signature = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
+      garbageValue = "762356543"
    )
-   static IndexedSprite method2778(boolean var0, boolean var1) {
-      return var0?(var1?class246.field2979:class90.field1393):(var1?Frames.field2074:class90.field1363);
+   @Export("addMenuEntry")
+   public static final void addMenuEntry(String var0, String var1, int var2, int var3, int var4, int var5) {
+      class98.method2289(var0, var1, var2, var3, var4, var5, false);
    }
 }

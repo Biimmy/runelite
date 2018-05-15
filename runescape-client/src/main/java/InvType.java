@@ -4,23 +4,23 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jb")
+@ObfuscatedName("it")
 @Implements("InvType")
 public class InvType extends CacheableNode {
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "Ljf;"
+      signature = "Liv;"
    )
-   public static IndexDataBase field3449;
-   @ObfuscatedName("k")
+   public static IndexDataBase field3247;
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "Lhd;"
+      signature = "Lgj;"
    )
    @Export("inventoryCache")
-   public static NodeCache inventoryCache;
-   @ObfuscatedName("t")
+   static NodeCache inventoryCache;
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = -234790135
+      intValue = -1334662393
    )
    @Export("size")
    public int size;
@@ -29,36 +29,61 @@ public class InvType extends CacheableNode {
       inventoryCache = new NodeCache(64);
    }
 
-   public InvType() {
+   InvType() {
       this.size = 0;
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(Lgc;I)V",
-      garbageValue = "-1816691580"
+      signature = "(Lgy;I)V",
+      garbageValue = "-1627662832"
    )
    @Export("decode")
-   public void decode(Buffer var1) {
+   void decode(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
          if(var2 == 0) {
             return;
          }
 
-         this.method4716(var1, var2);
+         this.method4813(var1, var2);
       }
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "(Lgc;II)V",
-      garbageValue = "714195674"
+      signature = "(Lgy;II)V",
+      garbageValue = "472098137"
    )
-   void method4716(Buffer var1, int var2) {
+   void method4813(Buffer var1, int var2) {
       if(var2 == 2) {
          this.size = var1.readUnsignedShort();
       }
 
+   }
+
+   @ObfuscatedName("jn")
+   @ObfuscatedSignature(
+      signature = "(IIIILlc;Lhr;I)V",
+      garbageValue = "1079660383"
+   )
+   @Export("drawDot")
+   static final void drawDot(int var0, int var1, int var2, int var3, SpritePixels var4, class224 var5) {
+      if(var4 != null) {
+         int var6 = Client.mapAngle & 2047;
+         int var7 = var3 * var3 + var2 * var2;
+         if(var7 <= 6400) {
+            int var8 = Graphics3D.SINE[var6];
+            int var9 = Graphics3D.COSINE[var6];
+            int var10 = var3 * var8 + var9 * var2 >> 16;
+            int var11 = var3 * var9 - var8 * var2 >> 16;
+            if(var7 > 2500) {
+               var4.method5911(var10 + var5.field2570 / 2 - var4.maxWidth / 2, var5.field2575 / 2 - var11 - var4.maxHeight / 2, var0, var1, var5.field2570, var5.field2575, var5.field2573, var5.field2572);
+            } else {
+               var4.drawAt(var0 + var10 + var5.field2570 / 2 - var4.maxWidth / 2, var5.field2575 / 2 + var1 - var11 - var4.maxHeight / 2);
+            }
+
+         }
+      }
    }
 }

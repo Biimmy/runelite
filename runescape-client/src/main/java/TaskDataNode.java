@@ -3,61 +3,61 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dd")
+@ObfuscatedName("du")
 @Implements("TaskDataNode")
 public abstract class TaskDataNode extends Node {
    @ObfuscatedName("w")
-   volatile boolean field1660;
-   @ObfuscatedName("v")
+   volatile boolean field1409;
+   @ObfuscatedName("c")
    @ObfuscatedSignature(
-      signature = "Ldd;"
+      signature = "Ldu;"
    )
-   TaskDataNode field1658;
-   @ObfuscatedName("q")
-   int field1659;
-   @ObfuscatedName("r")
+   TaskDataNode field1407;
+   @ObfuscatedName("e")
+   int field1406;
+   @ObfuscatedName("t")
    @ObfuscatedSignature(
-      signature = "Ldw;"
+      signature = "Ldl;"
    )
    @Export("data")
    AbstractIntegerNode0 data;
 
    protected TaskDataNode() {
-      this.field1660 = true;
+      this.field1409 = true;
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("a")
    @ObfuscatedSignature(
-      signature = "()Ldd;"
+      signature = "()Ldu;"
    )
-   protected abstract TaskDataNode vmethod4330();
+   protected abstract TaskDataNode vmethod4421();
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("l")
    @ObfuscatedSignature(
-      signature = "()Ldd;"
+      signature = "()Ldu;"
    )
-   protected abstract TaskDataNode vmethod4321();
+   protected abstract TaskDataNode vmethod4422();
 
-   @ObfuscatedName("i")
-   protected abstract int vmethod4314();
+   @ObfuscatedName("d")
+   protected abstract int vmethod4423();
 
-   @ObfuscatedName("u")
-   protected abstract void vmethod4317(int[] var1, int var2, int var3);
+   @ObfuscatedName("s")
+   protected abstract void vmethod4424(int[] var1, int var2, int var3);
 
-   @ObfuscatedName("y")
-   protected abstract void vmethod4319(int var1);
+   @ObfuscatedName("g")
+   protected abstract void vmethod4425(int var1);
 
-   @ObfuscatedName("ae")
-   int vmethod2491() {
+   @ObfuscatedName("ak")
+   int vmethod2484() {
       return 255;
    }
 
-   @ObfuscatedName("fn")
-   final void method2495(int[] var1, int var2, int var3) {
-      if(this.field1660) {
-         this.vmethod4317(var1, var2, var3);
+   @ObfuscatedName("ff")
+   final void method2488(int[] var1, int var2, int var3) {
+      if(this.field1409) {
+         this.vmethod4424(var1, var2, var3);
       } else {
-         this.vmethod4319(var3);
+         this.vmethod4425(var3);
       }
 
    }

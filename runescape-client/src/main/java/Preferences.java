@@ -7,46 +7,46 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cd")
+@ObfuscatedName("bt")
 @Implements("Preferences")
 public class Preferences {
-   @ObfuscatedName("rq")
+   @ObfuscatedName("rn")
    @ObfuscatedSignature(
-      signature = "Llp;"
+      signature = "Llz;"
    )
    @Export("renderOverview")
    static RenderOverview renderOverview;
-   @ObfuscatedName("ra")
-   static short[] field1248;
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = -865807965
+      intValue = 787405545
    )
-   static int field1249;
-   @ObfuscatedName("t")
+   static int field986;
+   @ObfuscatedName("av")
+   protected static boolean field978;
+   @ObfuscatedName("q")
    @Export("hideRoofs")
    boolean hideRoofs;
-   @ObfuscatedName("d")
+   @ObfuscatedName("b")
    @Export("muted")
    boolean muted;
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -2068550845
+      intValue = 132306381
    )
    @Export("screenType")
    int screenType;
-   @ObfuscatedName("m")
+   @ObfuscatedName("n")
    @Export("rememberedUsername")
    String rememberedUsername;
-   @ObfuscatedName("z")
+   @ObfuscatedName("h")
    @Export("hideUsername")
    boolean hideUsername;
-   @ObfuscatedName("i")
+   @ObfuscatedName("x")
    @Export("preferences")
    LinkedHashMap preferences;
 
    static {
-      field1249 = 6;
+      field986 = 6;
    }
 
    Preferences() {
@@ -54,11 +54,11 @@ public class Preferences {
       this.rememberedUsername = null;
       this.hideUsername = false;
       this.preferences = new LinkedHashMap();
-      this.method1727(true);
+      this.method1659(true);
    }
 
    @ObfuscatedSignature(
-      signature = "(Lgc;)V"
+      signature = "(Lgy;)V"
    )
    Preferences(Buffer var1) {
       this.screenType = 1;
@@ -67,7 +67,7 @@ public class Preferences {
       this.preferences = new LinkedHashMap();
       if(var1 != null && var1.payload != null) {
          int var2 = var1.readUnsignedByte();
-         if(var2 >= 0 && var2 <= field1249) {
+         if(var2 >= 0 && var2 <= field986) {
             if(var1.readUnsignedByte() == 1) {
                this.hideRoofs = true;
             }
@@ -95,34 +95,34 @@ public class Preferences {
             }
 
             if(var2 > 5) {
-               this.hideUsername = var1.method3524();
+               this.hideUsername = var1.method3656();
             }
          } else {
-            this.method1727(true);
+            this.method1659(true);
          }
       } else {
-         this.method1727(true);
+         this.method1659(true);
       }
 
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(ZI)V",
-      garbageValue = "2000642703"
+      signature = "(ZB)V",
+      garbageValue = "93"
    )
-   void method1727(boolean var1) {
+   void method1659(boolean var1) {
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(I)Lgc;",
-      garbageValue = "468796044"
+      signature = "(B)Lgy;",
+      garbageValue = "-5"
    )
    @Export("serialize")
    Buffer serialize() {
       Buffer var1 = new Buffer(100);
-      var1.putByte(field1249);
+      var1.putByte(field986);
       var1.putByte(this.hideRoofs?1:0);
       var1.putByte(this.muted?1:0);
       var1.putByte(this.screenType);
@@ -138,5 +138,123 @@ public class Preferences {
       var1.putString(this.rememberedUsername != null?this.rememberedUsername:"");
       var1.writeBooleanAsByte(this.hideUsername);
       return var1;
+   }
+
+   @ObfuscatedName("v")
+   @ObfuscatedSignature(
+      signature = "(ILcs;ZI)I",
+      garbageValue = "1360620841"
+   )
+   static int method1661(int var0, Script var1, boolean var2) {
+      int var3;
+      if(var0 == 4200) {
+         var3 = class69.intStack[--class45.intStackSize];
+         class69.scriptStringStack[++class83.scriptStringStackSize - 1] = class120.getItemDefinition(var3).name;
+         return 1;
+      } else {
+         int var4;
+         ItemComposition var5;
+         if(var0 == 4201) {
+            class45.intStackSize -= 2;
+            var3 = class69.intStack[class45.intStackSize];
+            var4 = class69.intStack[class45.intStackSize + 1];
+            var5 = class120.getItemDefinition(var3);
+            if(var4 >= 1 && var4 <= 5 && var5.groundActions[var4 - 1] != null) {
+               class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var5.groundActions[var4 - 1];
+            } else {
+               class69.scriptStringStack[++class83.scriptStringStackSize - 1] = "";
+            }
+
+            return 1;
+         } else if(var0 == 4202) {
+            class45.intStackSize -= 2;
+            var3 = class69.intStack[class45.intStackSize];
+            var4 = class69.intStack[class45.intStackSize + 1];
+            var5 = class120.getItemDefinition(var3);
+            if(var4 >= 1 && var4 <= 5 && var5.inventoryActions[var4 - 1] != null) {
+               class69.scriptStringStack[++class83.scriptStringStackSize - 1] = var5.inventoryActions[var4 - 1];
+            } else {
+               class69.scriptStringStack[++class83.scriptStringStackSize - 1] = "";
+            }
+
+            return 1;
+         } else if(var0 == 4203) {
+            var3 = class69.intStack[--class45.intStackSize];
+            class69.intStack[++class45.intStackSize - 1] = class120.getItemDefinition(var3).price;
+            return 1;
+         } else if(var0 == 4204) {
+            var3 = class69.intStack[--class45.intStackSize];
+            class69.intStack[++class45.intStackSize - 1] = class120.getItemDefinition(var3).isStackable == 1?1:0;
+            return 1;
+         } else {
+            ItemComposition var6;
+            if(var0 == 4205) {
+               var3 = class69.intStack[--class45.intStackSize];
+               var6 = class120.getItemDefinition(var3);
+               if(var6.notedTemplate == -1 && var6.note >= 0) {
+                  class69.intStack[++class45.intStackSize - 1] = var6.note;
+               } else {
+                  class69.intStack[++class45.intStackSize - 1] = var3;
+               }
+
+               return 1;
+            } else if(var0 == 4206) {
+               var3 = class69.intStack[--class45.intStackSize];
+               var6 = class120.getItemDefinition(var3);
+               if(var6.notedTemplate >= 0 && var6.note >= 0) {
+                  class69.intStack[++class45.intStackSize - 1] = var6.note;
+               } else {
+                  class69.intStack[++class45.intStackSize - 1] = var3;
+               }
+
+               return 1;
+            } else if(var0 == 4207) {
+               var3 = class69.intStack[--class45.intStackSize];
+               class69.intStack[++class45.intStackSize - 1] = class120.getItemDefinition(var3).isMembers?1:0;
+               return 1;
+            } else if(var0 == 4208) {
+               var3 = class69.intStack[--class45.intStackSize];
+               var6 = class120.getItemDefinition(var3);
+               if(var6.placeholderTemplateId == -1 && var6.placeholderId >= 0) {
+                  class69.intStack[++class45.intStackSize - 1] = var6.placeholderId;
+               } else {
+                  class69.intStack[++class45.intStackSize - 1] = var3;
+               }
+
+               return 1;
+            } else if(var0 == 4209) {
+               var3 = class69.intStack[--class45.intStackSize];
+               var6 = class120.getItemDefinition(var3);
+               if(var6.placeholderTemplateId >= 0 && var6.placeholderId >= 0) {
+                  class69.intStack[++class45.intStackSize - 1] = var6.placeholderId;
+               } else {
+                  class69.intStack[++class45.intStackSize - 1] = var3;
+               }
+
+               return 1;
+            } else if(var0 == 4210) {
+               String var7 = class69.scriptStringStack[--class83.scriptStringStackSize];
+               var4 = class69.intStack[--class45.intStackSize];
+               class16.method189(var7, var4 == 1);
+               class69.intStack[++class45.intStackSize - 1] = MapIcon.field256;
+               return 1;
+            } else if(var0 != 4211) {
+               if(var0 == 4212) {
+                  ScriptEvent.field522 = 0;
+                  return 1;
+               } else {
+                  return 2;
+               }
+            } else {
+               if(class137.field1889 != null && ScriptEvent.field522 < MapIcon.field256) {
+                  class69.intStack[++class45.intStackSize - 1] = class137.field1889[++ScriptEvent.field522 - 1] & '\uffff';
+               } else {
+                  class69.intStack[++class45.intStackSize - 1] = -1;
+               }
+
+               return 1;
+            }
+         }
+      }
    }
 }

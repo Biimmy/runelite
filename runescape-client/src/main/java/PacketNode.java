@@ -4,71 +4,56 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gh")
+@ObfuscatedName("fe")
 @Implements("PacketNode")
 public class PacketNode extends Node {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedSignature(
-      signature = "[Lgh;"
+      signature = "[Lfe;"
    )
    @Export("packetBufferNodes")
    static PacketNode[] packetBufferNodes;
-   @ObfuscatedName("m")
+   @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = -72182589
+      intValue = -1988723367
    )
-   static int field2502;
-   @ObfuscatedName("o")
+   static int field2277;
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
    @Export("clientPacket")
-   public ClientPacket clientPacket;
-   @ObfuscatedName("k")
+   ClientPacket clientPacket;
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -434098959
+      intValue = -354778165
    )
-   public int field2503;
-   @ObfuscatedName("t")
+   int field2278;
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "Lgs;"
+      signature = "Lge;"
    )
    @Export("packetBuffer")
    public PacketBuffer packetBuffer;
-   @ObfuscatedName("d")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = 1932772265
+      intValue = -499035007
    )
-   public int field2505;
+   public int field2280;
 
    static {
       packetBufferNodes = new PacketNode[300];
-      field2502 = 0;
+      field2277 = 0;
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1599528097"
+      signature = "(B)V",
+      garbageValue = "2"
    )
-   public void method3436() {
-      if(field2502 < packetBufferNodes.length) {
-         packetBufferNodes[++field2502 - 1] = this;
+   public void method3479() {
+      if(field2277 < packetBufferNodes.length) {
+         packetBufferNodes[++field2277 - 1] = this;
       }
-   }
-
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "(Ljf;IIIZB)V",
-      garbageValue = "11"
-   )
-   public static void method3442(IndexDataBase var0, int var1, int var2, int var3, boolean var4) {
-      class229.field2687 = 1;
-      class185.field2511 = var0;
-      VertexNormal.field1931 = var1;
-      GrandExchangeEvents.field284 = var2;
-      class86.field1330 = var3;
-      class229.field2692 = var4;
-      class2.field11 = 10000;
    }
 }

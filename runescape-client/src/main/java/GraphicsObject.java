@@ -1,76 +1,80 @@
-import java.io.IOException;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Hook;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cg")
+@ObfuscatedName("bf")
 @Implements("GraphicsObject")
 public final class GraphicsObject extends Renderable {
-   @ObfuscatedName("a")
+   @ObfuscatedName("bx")
    @ObfuscatedSignature(
-      signature = "Lie;"
+      signature = "Lip;"
    )
-   public static Track1 field1300;
-   @ObfuscatedName("o")
+   static BuildType field1042;
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = -643471269
+      intValue = 930375409
    )
    @Export("id")
    int id;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -1956042379
+      intValue = 655944159
    )
    @Export("startCycle")
    int startCycle;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = 20097807
+      intValue = 611659329
    )
    @Export("level")
    int level;
-   @ObfuscatedName("d")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = -1252882277
+      intValue = 469231961
    )
    @Export("x")
    int x;
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -33019839
+      intValue = 1901568555
    )
    @Export("y")
    int y;
-   @ObfuscatedName("m")
+   @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = 324319727
+      intValue = 2001790593
    )
    @Export("height")
    int height;
-   @ObfuscatedName("z")
+   @ObfuscatedName("h")
    @ObfuscatedSignature(
-      signature = "Lke;"
+      signature = "Ljh;"
    )
-   Sequence field1298;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = -1552850479
-   )
-   int field1292;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 377667007
-   )
-   int field1304;
+   Sequence field1038;
    @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = -1488825937
+   )
+   int field1039;
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      intValue = -271875461
+   )
+   int field1040;
+   @ObfuscatedName("a")
    @Export("finished")
    boolean finished;
 
+   @Hook(
+      value = "onGraphicsObjectCreated",
+      end = true
+   )
    GraphicsObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-      this.field1292 = 0;
-      this.field1304 = 0;
+      this.field1039 = 0;
+      this.field1040 = 0;
       this.finished = false;
       this.id = var1;
       this.level = var2;
@@ -78,29 +82,29 @@ public final class GraphicsObject extends Renderable {
       this.y = var4;
       this.height = var5;
       this.startCycle = var7 + var6;
-      int var8 = class86.getSpotAnimType(this.id).field3497;
+      int var8 = ScriptState.getSpotAnimType(this.id).field3292;
       if(var8 != -1) {
          this.finished = false;
-         this.field1298 = CombatInfo1.getAnimation(var8);
+         this.field1038 = class137.getAnimation(var8);
       } else {
          this.finished = true;
       }
 
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "-1"
+      signature = "(II)V",
+      garbageValue = "677069676"
    )
-   final void method1851(int var1) {
+   final void method1812(int var1) {
       if(!this.finished) {
-         this.field1304 += var1;
+         this.field1040 += var1;
 
-         while(this.field1304 > this.field1298.frameLengths[this.field1292]) {
-            this.field1304 -= this.field1298.frameLengths[this.field1292];
-            ++this.field1292;
-            if(this.field1292 >= this.field1298.frameIDs.length) {
+         while(this.field1040 > this.field1038.frameLengths[this.field1039]) {
+            this.field1040 -= this.field1038.frameLengths[this.field1039];
+            ++this.field1039;
+            if(this.field1039 >= this.field1038.frameIDs.length) {
                this.finished = true;
                break;
             }
@@ -109,16 +113,16 @@ public final class GraphicsObject extends Renderable {
       }
    }
 
-   @ObfuscatedName("u")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      signature = "(I)Lei;",
-      garbageValue = "1329079562"
+      signature = "(B)Ldk;",
+      garbageValue = "111"
    )
    protected final Model getModel() {
-      Spotanim var1 = class86.getSpotAnimType(this.id);
+      Spotanim var1 = ScriptState.getSpotAnimType(this.id);
       Model var2;
       if(!this.finished) {
-         var2 = var1.getModel(this.field1292);
+         var2 = var1.getModel(this.field1039);
       } else {
          var2 = var1.getModel(-1);
       }
@@ -126,46 +130,33 @@ public final class GraphicsObject extends Renderable {
       return var2 == null?null:var2;
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(ZB)V",
-      garbageValue = "120"
+      signature = "(IB)Lcs;",
+      garbageValue = "-74"
    )
-   @Export("sendConInfo")
-   public static void sendConInfo(boolean var0) {
-      if(class264.NetCache_socket != null) {
-         try {
-            Buffer var1 = new Buffer(4);
-            var1.putByte(var0?2:3);
-            var1.put24bitInt(0);
-            class264.NetCache_socket.vmethod3337(var1.payload, 0, 4);
-         } catch (IOException var4) {
-            try {
-               class264.NetCache_socket.vmethod3331();
-            } catch (Exception var3) {
-               ;
-            }
-
-            ++class264.field3431;
-            class264.NetCache_socket = null;
+   static Script method1806(int var0) {
+      Script var1 = (Script)Script.field1214.get((long)var0);
+      if(var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = TotalQuantityComparator.indexScripts.getConfigData(var0, 0);
+         if(var2 == null) {
+            return null;
+         } else {
+            var1 = class143.newScript(var2);
+            Script.field1214.put(var1, (long)var0);
+            return var1;
          }
-
       }
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "283412280"
+      signature = "(CI)Z",
+      garbageValue = "24362530"
    )
-   @Export("nextPowerOfTwo")
-   public static int nextPowerOfTwo(int var0) {
-      --var0;
-      var0 |= var0 >>> 1;
-      var0 |= var0 >>> 2;
-      var0 |= var0 >>> 4;
-      var0 |= var0 >>> 8;
-      var0 |= var0 >>> 16;
-      return var0 + 1;
+   static final boolean method1813(char var0) {
+      return var0 == 160 || var0 == ' ' || var0 == '_' || var0 == '-';
    }
 }

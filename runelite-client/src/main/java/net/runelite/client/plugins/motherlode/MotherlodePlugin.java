@@ -138,6 +138,12 @@ public class MotherlodePlugin extends Plugin
 	}
 
 	@Override
+	protected void startUp()
+	{
+		inMlm = checkInMlm();
+	}
+
+	@Override
 	protected void shutDown() throws Exception
 	{
 		veins.clear();
@@ -154,8 +160,8 @@ public class MotherlodePlugin extends Plugin
 	{
 		if (inMlm)
 		{
-			curSackSize = client.getSetting(Varbits.SACK_NUMBER);
-			boolean sackUpgraded = client.getSetting(Varbits.SACK_UPGRADED) == 1;
+			curSackSize = client.getVar(Varbits.SACK_NUMBER);
+			boolean sackUpgraded = client.getVar(Varbits.SACK_UPGRADED) == 1;
 			maxSackSize = sackUpgraded ? SACK_LARGE_SIZE : SACK_SIZE;
 		}
 	}

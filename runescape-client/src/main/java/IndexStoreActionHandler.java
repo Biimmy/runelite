@@ -1,50 +1,41 @@
-import java.lang.management.GarbageCollectorMXBean;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jv")
+@ObfuscatedName("ih")
 @Implements("IndexStoreActionHandler")
 public class IndexStoreActionHandler implements Runnable {
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "Lhr;"
+      signature = "Lgz;"
    )
    @Export("IndexStoreActionHandler_requestQueue")
    public static Deque IndexStoreActionHandler_requestQueue;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "Lhr;"
+      signature = "Lgz;"
    )
    @Export("IndexStoreActionHandler_responseQueue")
    public static Deque IndexStoreActionHandler_responseQueue;
-   @ObfuscatedName("t")
-   @ObfuscatedSignature(
-      signature = "Lll;"
-   )
-   static IndexedSprite field3398;
-   @ObfuscatedName("d")
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = -2083116819
+      intValue = 596410709
    )
-   public static int field3401;
-   @ObfuscatedName("h")
+   public static int field3191;
+   @ObfuscatedName("b")
    @Export("IndexStoreActionHandler_lock")
    public static Object IndexStoreActionHandler_lock;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = -1349346113
-   )
-   static int field3399;
-   @ObfuscatedName("ae")
-   protected static GarbageCollectorMXBean field3402;
+   @ObfuscatedName("f")
+   @Export("IndexStoreActionHandler_thread")
+   static Thread IndexStoreActionHandler_thread;
 
    static {
       IndexStoreActionHandler_requestQueue = new Deque();
       IndexStoreActionHandler_responseQueue = new Deque();
-      field3401 = 0;
+      field3191 = 0;
       IndexStoreActionHandler_lock = new Object();
    }
 
@@ -60,13 +51,13 @@ public class IndexStoreActionHandler implements Runnable {
             Object var14;
             if(var1 != null) {
                if(var1.type == 0) {
-                  var1.index.write((int)var1.hash, var1.field3367, var1.field3367.length);
+                  var1.index.write((int)var1.hash, var1.field3165, var1.field3165.length);
                   var2 = IndexStoreActionHandler_requestQueue;
                   synchronized(IndexStoreActionHandler_requestQueue) {
                      var1.unlink();
                   }
                } else if(var1.type == 1) {
-                  var1.field3367 = var1.index.read((int)var1.hash);
+                  var1.field3165 = var1.index.read((int)var1.hash);
                   var2 = IndexStoreActionHandler_requestQueue;
                   synchronized(IndexStoreActionHandler_requestQueue) {
                      IndexStoreActionHandler_responseQueue.addFront(var1);
@@ -75,39 +66,70 @@ public class IndexStoreActionHandler implements Runnable {
 
                var14 = IndexStoreActionHandler_lock;
                synchronized(IndexStoreActionHandler_lock) {
-                  if(field3401 <= 1) {
-                     field3401 = 0;
+                  if(field3191 <= 1) {
+                     field3191 = 0;
                      IndexStoreActionHandler_lock.notifyAll();
                      return;
                   }
 
-                  field3401 = 600;
+                  field3191 = 600;
                }
             } else {
-               ScriptVarType.method11(100L);
+               WorldMapType1.method218(100L);
                var14 = IndexStoreActionHandler_lock;
                synchronized(IndexStoreActionHandler_lock) {
-                  if(field3401 <= 1) {
-                     field3401 = 0;
+                  if(field3191 <= 1) {
+                     field3191 = 0;
                      IndexStoreActionHandler_lock.notifyAll();
                      return;
                   }
 
-                  --field3401;
+                  --field3191;
                }
             }
          }
       } catch (Exception var13) {
-         AttackOption.processClientError((String)null, var13);
+         class43.processClientError((String)null, var13);
       }
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-2142349185"
+      signature = "(B)Z",
+      garbageValue = "100"
    )
-   static final boolean method4629() {
-      return class132.Viewport_containsMouse;
+   @Export("loadWorlds")
+   static boolean loadWorlds() {
+      try {
+         if(World.listFetcher == null) {
+            World.listFetcher = class59.urlRequester.request(new URL(ScriptEvent.field521));
+         } else if(World.listFetcher.isDone()) {
+            byte[] var0 = World.listFetcher.getResponse();
+            Buffer var1 = new Buffer(var0);
+            var1.readInt();
+            World.worldCount = var1.readUnsignedShort();
+            class143.worldList = new World[World.worldCount];
+
+            World var3;
+            for(int var2 = 0; var2 < World.worldCount; var3.index = var2++) {
+               var3 = class143.worldList[var2] = new World();
+               var3.id = var1.readUnsignedShort();
+               var3.mask = var1.readInt();
+               var3.address = var1.readString();
+               var3.activity = var1.readString();
+               var3.location = var1.readUnsignedByte();
+               var3.playerCount = var1.readShort();
+            }
+
+            UrlRequest.method3137(class143.worldList, 0, class143.worldList.length - 1, World.field958, World.field969);
+            World.listFetcher = null;
+            return true;
+         }
+      } catch (Exception var4) {
+         var4.printStackTrace();
+         World.listFetcher = null;
+      }
+
+      return false;
    }
 }

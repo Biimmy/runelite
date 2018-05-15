@@ -4,43 +4,41 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bo")
+@ObfuscatedName("ak")
 @Implements("ScriptState")
 public class ScriptState {
-   @ObfuscatedName("pz")
-   @ObfuscatedGetter(
-      intValue = -2113898473
-   )
-   static int field755;
-   @ObfuscatedName("p")
-   static int[] field762;
-   @ObfuscatedName("er")
-   @ObfuscatedGetter(
-      intValue = 260466589
-   )
-   static int field761;
-   @ObfuscatedName("ja")
-   @ObfuscatedGetter(
-      intValue = -1304361363
-   )
-   @Export("menuY")
-   static int menuY;
-   @ObfuscatedName("o")
+   @ObfuscatedName("qv")
    @ObfuscatedSignature(
-      signature = "Lcr;"
+      signature = "Lbt;"
+   )
+   @Export("preferences")
+   static Preferences preferences;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 1546943225
+   )
+   public static int field463;
+   @ObfuscatedName("bs")
+   @ObfuscatedSignature(
+      signature = "[Llc;"
+   )
+   static SpritePixels[] field469;
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      signature = "Lcs;"
    )
    @Export("invokedFromScript")
    Script invokedFromScript;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -1003403421
+      intValue = -1864734979
    )
    @Export("invokedFromPc")
    int invokedFromPc;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @Export("savedLocalInts")
    int[] savedLocalInts;
-   @ObfuscatedName("d")
+   @ObfuscatedName("b")
    @Export("savedLocalStrings")
    String[] savedLocalStrings;
 
@@ -48,65 +46,129 @@ public class ScriptState {
       this.invokedFromPc = -1;
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(Lbg;Lbg;IZI)I",
-      garbageValue = "570182430"
+      signature = "(II)Liz;",
+      garbageValue = "651406254"
    )
-   static int method1110(World var0, World var1, int var2, boolean var3) {
-      if(var2 == 1) {
-         int var4 = var0.playerCount;
-         int var5 = var1.playerCount;
-         if(!var3) {
-            if(var4 == -1) {
-               var4 = 2001;
-            }
-
-            if(var5 == -1) {
-               var5 = 2001;
-            }
+   @Export("getSpotAnimType")
+   public static Spotanim getSpotAnimType(int var0) {
+      Spotanim var1 = (Spotanim)Spotanim.spotanims.get((long)var0);
+      if(var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = Spotanim.SpotAnimationDefinition_indexCache.getConfigData(13, var0);
+         var1 = new Spotanim();
+         var1.id = var0;
+         if(var2 != null) {
+            var1.decode(new Buffer(var2));
          }
 
-         return var4 - var5;
-      } else {
-         return var2 == 2?var0.location - var1.location:(var2 == 3?(var0.activity.equals("-")?(var1.activity.equals("-")?0:(var3?-1:1)):(var1.activity.equals("-")?(var3?1:-1):var0.activity.compareTo(var1.activity))):(var2 == 4?(var0.method1686()?(var1.method1686()?0:1):(var1.method1686()?-1:0)):(var2 == 5?(var0.method1684()?(var1.method1684()?0:1):(var1.method1684()?-1:0)):(var2 == 6?(var0.method1685()?(var1.method1685()?0:1):(var1.method1685()?-1:0)):(var2 == 7?(var0.method1683()?(var1.method1683()?0:1):(var1.method1683()?-1:0)):var0.id - var1.id)))));
+         Spotanim.spotanims.put(var1, (long)var0);
+         return var1;
       }
    }
 
-   @ObfuscatedName("ee")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(Ljn;Ljava/lang/String;I)V",
-      garbageValue = "-1408810217"
+      signature = "(IB)Ljy;",
+      garbageValue = "6"
    )
-   static void method1108(IndexData var0, String var1) {
-      class64 var2 = new class64(var0, var1);
-      Client.field871.add(var2);
+   public static Enum method1063(int var0) {
+      Enum var1 = (Enum)Enum.EnumDefinition_cached.get((long)var0);
+      if(var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = class311.EnumDefinition_indexCache.getConfigData(8, var0);
+         var1 = new Enum();
+         if(var2 != null) {
+            var1.decode(new Buffer(var2));
+         }
+
+         Enum.EnumDefinition_cached.put(var1, (long)var0);
+         return var1;
+      }
    }
 
-   @ObfuscatedName("hq")
+   @ObfuscatedName("a")
    @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1397694242"
+      signature = "(ILcs;ZI)I",
+      garbageValue = "2082592017"
    )
-   static void method1109() {
-      for(int var0 = 0; var0 < Client.menuOptionCount; ++var0) {
-         int var2 = Client.menuTypes[var0];
-         boolean var1 = var2 == 57 || var2 == 58 || var2 == 1007 || var2 == 25 || var2 == 30;
-         if(var1) {
-            if(var0 < Client.menuOptionCount - 1) {
-               for(int var3 = var0; var3 < Client.menuOptionCount - 1; ++var3) {
-                  Client.menuOptions[var3] = Client.menuOptions[var3 + 1];
-                  Client.menuTargets[var3] = Client.menuTargets[var3 + 1];
-                  Client.menuTypes[var3] = Client.menuTypes[var3 + 1];
-                  Client.menuIdentifiers[var3] = Client.menuIdentifiers[var3 + 1];
-                  Client.menuActionParams0[var3] = Client.menuActionParams0[var3 + 1];
-                  Client.menuActionParams1[var3] = Client.menuActionParams1[var3 + 1];
-                  Client.menuBooleanArray[var3] = Client.menuBooleanArray[var3 + 1];
-               }
-            }
+   static int method1062(int var0, Script var1, boolean var2) {
+      Widget var3;
+      if(var0 >= 2000) {
+         var0 -= 1000;
+         var3 = OwnWorldComparator.getWidget(class69.intStack[--class45.intStackSize]);
+      } else {
+         var3 = var2?class184.field2379:FriendManager.field996;
+      }
 
-            --Client.menuOptionCount;
+      DState.method3548(var3);
+      if(var0 != 1200 && var0 != 1205 && var0 != 1212) {
+         if(var0 == 1201) {
+            var3.modelType = 2;
+            var3.modelId = class69.intStack[--class45.intStackSize];
+            return 1;
+         } else if(var0 == 1202) {
+            var3.modelType = 3;
+            var3.modelId = MilliTimer.localPlayer.composition.method4493();
+            return 1;
+         } else {
+            return 2;
          }
+      } else {
+         class45.intStackSize -= 2;
+         int var4 = class69.intStack[class45.intStackSize];
+         int var5 = class69.intStack[class45.intStackSize + 1];
+         var3.itemId = var4;
+         var3.itemQuantity = var5;
+         ItemComposition var6 = class120.getItemDefinition(var4);
+         var3.rotationX = var6.xan2d;
+         var3.rotationZ = var6.yan2d;
+         var3.rotationY = var6.zan2d;
+         var3.offsetX2d = var6.offsetX2d;
+         var3.offsetY2d = var6.offsetY2d;
+         var3.modelZoom = var6.zoom2d;
+         if(var0 == 1205) {
+            var3.field2645 = 0;
+         } else if(var0 == 1212 | var6.isStackable == 1) {
+            var3.field2645 = 1;
+         } else {
+            var3.field2645 = 2;
+         }
+
+         if(var3.field2678 > 0) {
+            var3.modelZoom = var3.modelZoom * 32 / var3.field2678;
+         } else if(var3.originalWidth > 0) {
+            var3.modelZoom = var3.modelZoom * 32 / var3.originalWidth;
+         }
+
+         return 1;
+      }
+   }
+
+   @ObfuscatedName("ks")
+   @ObfuscatedSignature(
+      signature = "(B)V",
+      garbageValue = "-96"
+   )
+   static void method1061() {
+      if(Client.field622 && MilliTimer.localPlayer != null) {
+         int var0 = MilliTimer.localPlayer.pathX[0];
+         int var1 = MilliTimer.localPlayer.pathY[0];
+         if(var0 < 0 || var1 < 0 || var0 >= 104 || var1 >= 104) {
+            return;
+         }
+
+         Signlink.field1979 = MilliTimer.localPlayer.x;
+         int var2 = class264.getTileHeight(MilliTimer.localPlayer.x, MilliTimer.localPlayer.y, class192.plane) - Client.field668;
+         if(var2 < Client.field857) {
+            Client.field857 = var2;
+         }
+
+         ItemContainer.field481 = MilliTimer.localPlayer.y;
+         Client.field622 = false;
       }
 
    }

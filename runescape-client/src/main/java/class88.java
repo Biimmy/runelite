@@ -1,86 +1,191 @@
-import java.math.BigInteger;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cw")
-public class class88 {
-   @ObfuscatedName("o")
-   static final BigInteger field1345;
-   @ObfuscatedName("k")
-   static final BigInteger field1346;
+@ObfuscatedName("cp")
+public class class88 extends TaskDataNode {
+   @ObfuscatedName("m")
+   @ObfuscatedSignature(
+      signature = "Lgz;"
+   )
+   Deque field1255;
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      signature = "Lgz;"
+   )
+   Deque field1256;
+   @ObfuscatedName("b")
+   int field1257;
+   @ObfuscatedName("f")
+   int field1258;
 
-   static {
-      field1345 = new BigInteger("10001", 16);
-      field1346 = new BigInteger("8c2fa7b0d382137893318d3fda891138e957d00298df52ce53b5e53fda1eafb9dfa623bdc78fe87c2dcabd04698b27c446a72aee861ceed45c85e7c10db182d95e3514b67d44e92e1df9c10a3136207ffd9df0956fe4507fb969ab0abb4e19b876b16752f90de888c88e393a769c0c13977ee81c79549e9a690f112230ff4303", 16);
+   public class88() {
+      this.field1255 = new Deque();
+      this.field1256 = new Deque();
+      this.field1257 = 0;
+      this.field1258 = -1;
    }
 
-   @ObfuscatedName("hx")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(IIIIIIIII)V",
-      garbageValue = "1598147844"
+      signature = "(Ldu;)V"
    )
-   static final void method1893(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-      if(class189.loadWidget(var0)) {
-         class66.field785 = null;
-         GameCanvas.gameDraw(MouseRecorder.widgets[var0], -1, var1, var2, var3, var4, var5, var6, var7);
-         if(class66.field785 != null) {
-            GameCanvas.gameDraw(class66.field785, -1412584499, var1, var2, var3, var4, CombatInfoListHolder.field1310, GrandExchangeEvent.field300, var7);
-            class66.field785 = null;
+   public final synchronized void method2049(TaskDataNode var1) {
+      this.field1255.addTail(var1);
+   }
+
+   @ObfuscatedName("m")
+   @ObfuscatedSignature(
+      signature = "(Ldu;)V"
+   )
+   public final synchronized void method2050(TaskDataNode var1) {
+      var1.unlink();
+   }
+
+   @ObfuscatedName("q")
+   void method2078() {
+      if(this.field1257 > 0) {
+         for(class100 var1 = (class100)this.field1256.getFront(); var1 != null; var1 = (class100)this.field1256.getNext()) {
+            var1.field1364 -= this.field1257;
          }
 
+         this.field1258 -= this.field1257;
+         this.field1257 = 0;
+      }
+
+   }
+
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      signature = "(Lgl;Lcr;)V"
+   )
+   void method2052(Node var1, class100 var2) {
+      while(this.field1256.head != var1 && ((class100)var1).field1364 <= var2.field1364) {
+         var1 = var1.next;
+      }
+
+      Deque.method4132(var2, var1);
+      this.field1258 = ((class100)this.field1256.head.next).field1364;
+   }
+
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      signature = "(Lcr;)V"
+   )
+   void method2053(class100 var1) {
+      var1.unlink();
+      var1.method2291();
+      Node var2 = this.field1256.head.next;
+      if(var2 == this.field1256.head) {
+         this.field1258 = -1;
       } else {
-         if(var7 != -1) {
-            Client.field1072[var7] = true;
-         } else {
-            for(int var8 = 0; var8 < 100; ++var8) {
-               Client.field1072[var8] = true;
+         this.field1258 = ((class100)var2).field1364;
+      }
+
+   }
+
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      signature = "()Ldu;"
+   )
+   protected TaskDataNode vmethod4421() {
+      return (TaskDataNode)this.field1255.getFront();
+   }
+
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      signature = "()Ldu;"
+   )
+   protected TaskDataNode vmethod4422() {
+      return (TaskDataNode)this.field1255.getNext();
+   }
+
+   @ObfuscatedName("d")
+   protected int vmethod4423() {
+      return 0;
+   }
+
+   @ObfuscatedName("s")
+   public final synchronized void vmethod4424(int[] var1, int var2, int var3) {
+      do {
+         if(this.field1258 < 0) {
+            this.method2057(var1, var2, var3);
+            return;
+         }
+
+         if(var3 + this.field1257 < this.field1258) {
+            this.field1257 += var3;
+            this.method2057(var1, var2, var3);
+            return;
+         }
+
+         int var4 = this.field1258 - this.field1257;
+         this.method2057(var1, var2, var4);
+         var2 += var4;
+         var3 -= var4;
+         this.field1257 += var4;
+         this.method2078();
+         class100 var5 = (class100)this.field1256.getFront();
+         synchronized(var5) {
+            int var7 = var5.method2298();
+            if(var7 < 0) {
+               var5.field1364 = 0;
+               this.method2053(var5);
+            } else {
+               var5.field1364 = var7;
+               this.method2052(var5.next, var5);
             }
          }
+      } while(var3 != 0);
 
-      }
    }
 
-   @ObfuscatedName("jh")
-   @ObfuscatedSignature(
-      signature = "(Lin;I)V",
-      garbageValue = "-1994717479"
-   )
-   static final void method1894(Widget var0) {
-      int var1 = var0.contentType;
-      if(var1 == 324) {
-         if(Client.field1044 == -1) {
-            Client.field1044 = var0.spriteId;
-            Client.field1138 = var0.field2858;
-         }
-
-         if(Client.field1132.isFemale) {
-            var0.spriteId = Client.field1044;
-         } else {
-            var0.spriteId = Client.field1138;
-         }
-
-      } else if(var1 == 325) {
-         if(Client.field1044 == -1) {
-            Client.field1044 = var0.spriteId;
-            Client.field1138 = var0.field2858;
-         }
-
-         if(Client.field1132.isFemale) {
-            var0.spriteId = Client.field1138;
-         } else {
-            var0.spriteId = Client.field1044;
-         }
-
-      } else if(var1 == 327) {
-         var0.rotationX = 150;
-         var0.rotationZ = (int)(Math.sin((double)Client.gameCycle / 40.0D) * 256.0D) & 2047;
-         var0.modelType = 5;
-         var0.modelId = 0;
-      } else if(var1 == 328) {
-         var0.rotationX = 150;
-         var0.rotationZ = (int)(Math.sin((double)Client.gameCycle / 40.0D) * 256.0D) & 2047;
-         var0.modelType = 5;
-         var0.modelId = 1;
+   @ObfuscatedName("p")
+   void method2057(int[] var1, int var2, int var3) {
+      for(TaskDataNode var4 = (TaskDataNode)this.field1255.getFront(); var4 != null; var4 = (TaskDataNode)this.field1255.getNext()) {
+         var4.method2488(var1, var2, var3);
       }
+
+   }
+
+   @ObfuscatedName("g")
+   public final synchronized void vmethod4425(int var1) {
+      do {
+         if(this.field1258 < 0) {
+            this.method2059(var1);
+            return;
+         }
+
+         if(this.field1257 + var1 < this.field1258) {
+            this.field1257 += var1;
+            this.method2059(var1);
+            return;
+         }
+
+         int var2 = this.field1258 - this.field1257;
+         this.method2059(var2);
+         var1 -= var2;
+         this.field1257 += var2;
+         this.method2078();
+         class100 var3 = (class100)this.field1256.getFront();
+         synchronized(var3) {
+            int var5 = var3.method2298();
+            if(var5 < 0) {
+               var3.field1364 = 0;
+               this.method2053(var3);
+            } else {
+               var3.field1364 = var5;
+               this.method2052(var3.next, var3);
+            }
+         }
+      } while(var1 != 0);
+
+   }
+
+   @ObfuscatedName("y")
+   void method2059(int var1) {
+      for(TaskDataNode var2 = (TaskDataNode)this.field1255.getFront(); var2 != null; var2 = (TaskDataNode)this.field1255.getNext()) {
+         var2.vmethod4425(var1);
+      }
+
    }
 }

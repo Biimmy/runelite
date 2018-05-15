@@ -3,44 +3,27 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fn")
+@ObfuscatedName("ez")
 @Implements("RunException")
 public class RunException extends RuntimeException {
-   @ObfuscatedName("o")
-   public static Applet field2198;
-   @ObfuscatedName("k")
-   public static String field2194;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = 1461760579
-   )
-   @Export("revision")
-   public static int revision;
-   @ObfuscatedName("h")
-   String field2197;
+   @ObfuscatedName("w")
+   public static Applet field1957;
    @ObfuscatedName("m")
+   public static String field1958;
+   @ObfuscatedName("b")
+   @ObfuscatedGetter(
+      intValue = -1361964555
+   )
+   public static int field1959;
+   @ObfuscatedName("f")
+   String field1960;
+   @ObfuscatedName("n")
    @Export("parent")
    Throwable parent;
 
    RunException(Throwable var1, String var2) {
-      this.field2197 = var2;
+      this.field1960 = var2;
       this.parent = var1;
-   }
-
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "(Ljf;IIS)Z",
-      garbageValue = "23272"
-   )
-   static boolean method3215(IndexDataBase var0, int var1, int var2) {
-      byte[] var3 = var0.getConfigData(var1, var2);
-      if(var3 == null) {
-         return false;
-      } else {
-         Area.decodeSprite(var3);
-         return true;
-      }
    }
 }

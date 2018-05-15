@@ -4,20 +4,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gm")
+@ObfuscatedName("fl")
 @Implements("GZipDecompressor")
 public class GZipDecompressor {
-   @ObfuscatedName("l")
-   static int[][][] field2520;
-   @ObfuscatedName("bs")
-   @ObfuscatedSignature(
-      signature = "Llh;"
-   )
-   @Export("loginType")
-   static JagexLoginType loginType;
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @Export("inflator")
    Inflater inflator;
+
+   public GZipDecompressor() {
+      this(-1, 1000000, 1000000);
+   }
 
    @ObfuscatedSignature(
       signature = "(III)V",
@@ -26,14 +22,10 @@ public class GZipDecompressor {
    GZipDecompressor(int var1, int var2, int var3) {
    }
 
-   public GZipDecompressor() {
-      this(-1, 1000000, 1000000);
-   }
-
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(Lgc;[BI)V",
-      garbageValue = "929743285"
+      signature = "(Lgy;[BI)V",
+      garbageValue = "1499837314"
    )
    @Export("decompress")
    public void decompress(Buffer var1, byte[] var2) {
@@ -56,46 +48,35 @@ public class GZipDecompressor {
       }
    }
 
-   @ObfuscatedName("js")
+   @ObfuscatedName("ag")
    @ObfuscatedSignature(
-      signature = "(Lin;B)Z",
-      garbageValue = "70"
+      signature = "([BB)[B",
+      garbageValue = "1"
    )
-   static final boolean method3461(Widget var0) {
-      int var1 = var0.contentType;
-      if(var1 == 205) {
-         Client.field915 = 250;
-         return true;
+   @Export("decodeContainer")
+   static final byte[] decodeContainer(byte[] var0) {
+      Buffer var1 = new Buffer(var0);
+      int var2 = var1.readUnsignedByte();
+      int var3 = var1.readInt();
+      if(var3 < 0 || IndexDataBase.field3179 != 0 && var3 > IndexDataBase.field3179) {
+         throw new RuntimeException();
+      } else if(var2 == 0) {
+         byte[] var4 = new byte[var3];
+         var1.readBytes(var4, 0, var3);
+         return var4;
       } else {
-         int var2;
-         int var3;
-         if(var1 >= 300 && var1 <= 313) {
-            var2 = (var1 - 300) / 2;
-            var3 = var1 & 1;
-            Client.field1132.method4379(var2, var3 == 1);
-         }
+         int var6 = var1.readInt();
+         if(var6 >= 0 && (IndexDataBase.field3179 == 0 || var6 <= IndexDataBase.field3179)) {
+            byte[] var5 = new byte[var6];
+            if(var2 == 1) {
+               class176.Bzip2Decompressor_decompress(var5, var6, var0, var3, 9);
+            } else {
+               IndexDataBase.gzip.decompress(var1, var5);
+            }
 
-         if(var1 >= 314 && var1 <= 323) {
-            var2 = (var1 - 314) / 2;
-            var3 = var1 & 1;
-            Client.field1132.method4406(var2, var3 == 1);
-         }
-
-         if(var1 == 324) {
-            Client.field1132.method4386(false);
-         }
-
-         if(var1 == 325) {
-            Client.field1132.method4386(true);
-         }
-
-         if(var1 == 326) {
-            PacketNode var4 = WorldMapRectangle.method280(ClientPacket.field2435, Client.field957.field1484);
-            Client.field1132.method4398(var4.packetBuffer);
-            Client.field957.method2052(var4);
-            return true;
+            return var5;
          } else {
-            return false;
+            throw new RuntimeException();
          }
       }
    }

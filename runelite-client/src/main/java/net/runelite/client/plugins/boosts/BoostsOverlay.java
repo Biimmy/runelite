@@ -27,7 +27,6 @@ package net.runelite.client.plugins.boosts;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.time.Duration;
 import java.time.Instant;
 import javax.inject.Inject;
 import lombok.Getter;
@@ -37,6 +36,7 @@ import net.runelite.client.game.SkillIconManager;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
+import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
@@ -48,6 +48,7 @@ class BoostsOverlay extends Overlay
 	private final Client client;
 	private final BoostsConfig config;
 	private final InfoBoxManager infoBoxManager;
+	private final PanelComponent panelComponent = new PanelComponent();
 
 	@Inject
 	private BoostsPlugin plugin;
@@ -55,7 +56,7 @@ class BoostsOverlay extends Overlay
 	@Inject
 	private SkillIconManager iconManager;
 
-	private PanelComponent panelComponent;
+	private boolean overlayActive;
 
 	@Inject
 	BoostsOverlay(Client client, BoostsConfig config, InfoBoxManager infoBoxManager)
@@ -70,8 +71,25 @@ class BoostsOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		panelComponent = new PanelComponent();
-		boolean overlayActive = false;
+		Instant lastChange = plugin.getLastChange();
+		panelComponent.getChildren().clear();
+
+		if (!config.displayIndicators()
+			&& config.displayNextChange()
+			&& lastChange != null
+			&& overlayActive)
+		{
+			int nextChange = plugin.getChangeTime();
+			if (nextChange > 0)
+			{
+				panelComponent.getChildren().add(LineComponent.builder()
+					.left("Next change in")
+					.right(String.valueOf(nextChange))
+					.build());
+			}
+		}
+
+		overlayActive = false;
 
 		for (Skill skill : plugin.getShownSkills())
 		{
@@ -128,31 +146,15 @@ class BoostsOverlay extends Overlay
 					}
 				}
 
-				panelComponent.getLines().add(new PanelComponent.Line(
-					skill.getName(),
-					Color.WHITE,
-					str,
-					strColor
-				));
+				panelComponent.getChildren().add(LineComponent.builder()
+					.left(skill.getName())
+					.right(str)
+					.rightColor(strColor)
+					.build());
 			}
 		}
 
-		Instant lastChange = plugin.getLastChange();
-		if (config.displayNextChange() && lastChange != null && overlayActive)
-		{
-			int nextChange = 60 - (int)Duration.between(lastChange, Instant.now()).getSeconds();
-			if (nextChange > 0)
-			{
-				panelComponent.getLines().add(new PanelComponent.Line(
-					"Next change in",
-					Color.WHITE,
-					String.valueOf(nextChange),
-					Color.WHITE
-				));
-			}
-		}
-
-		return panelComponent.getLines().isEmpty() ? null : panelComponent.render(graphics);
+		return panelComponent.render(graphics);
 	}
 
 	private Color getTextColor(int boost)

@@ -1,24 +1,31 @@
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bq")
+@ObfuscatedName("bo")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "Lhh;"
+      signature = "Lgd;"
    )
    @Export("itemContainers")
    static HashTable itemContainers;
-   @ObfuscatedName("fg")
-   @Export("landMapFileIds")
-   static int[] landMapFileIds;
-   @ObfuscatedName("k")
+   @ObfuscatedName("fo")
+   @Export("landRegionFileIds")
+   static int[] landRegionFileIds;
+   @ObfuscatedName("gl")
+   @ObfuscatedGetter(
+      intValue = -277523073
+   )
+   static int field481;
+   @ObfuscatedName("m")
    @Export("itemIds")
    int[] itemIds;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @Export("stackSizes")
    int[] stackSizes;
 
@@ -31,20 +38,28 @@ public class ItemContainer extends Node {
       this.stackSizes = new int[]{0};
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("hd")
    @ObfuscatedSignature(
-      signature = "(IIB)I",
-      garbageValue = "-44"
+      signature = "(ZI)V",
+      garbageValue = "-2110619792"
    )
-   static final int method1131(int var0, int var1) {
-      int var2 = WallObject.getSmoothNoise(var0 + 45365, var1 + 91923, 4) - 128 + (WallObject.getSmoothNoise(10294 + var0, 37821 + var1, 2) - 128 >> 1) + (WallObject.getSmoothNoise(var0, var1, 1) - 128 >> 2);
-      var2 = (int)(0.3D * (double)var2) + 35;
-      if(var2 < 10) {
-         var2 = 10;
-      } else if(var2 > 60) {
-         var2 = 60;
-      }
+   @Export("flush")
+   static final void flush(boolean var0) {
+      Varbit.method4951();
+      ++Client.field739.field1252;
+      if(Client.field739.field1252 >= 50 || var0) {
+         Client.field739.field1252 = 0;
+         if(!Client.socketError && Client.field739.getSocket() != null) {
+            PacketNode var1 = DecorativeObject.method3115(ClientPacket.field2217, Client.field739.field1250);
+            Client.field739.method2019(var1);
 
-      return var2;
+            try {
+               Client.field739.method2034();
+            } catch (IOException var3) {
+               Client.socketError = true;
+            }
+         }
+
+      }
    }
 }

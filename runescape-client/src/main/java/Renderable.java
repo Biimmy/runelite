@@ -4,17 +4,18 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ed")
+@ObfuscatedName("dz")
 @Implements("Renderable")
 public abstract class Renderable extends CacheableNode {
-   @ObfuscatedName("pb")
-   @ObfuscatedGetter(
-      intValue = -1667513523
+   @ObfuscatedName("fr")
+   @ObfuscatedSignature(
+      signature = "Llc;"
    )
-   static int field2051;
-   @ObfuscatedName("cs")
+   @Export("mapedge")
+   static SpritePixels mapedge;
+   @ObfuscatedName("cm")
    @ObfuscatedGetter(
-      intValue = -1062304309
+      intValue = -2095268899
    )
    @Export("modelHeight")
    public int modelHeight;
@@ -23,66 +24,99 @@ public abstract class Renderable extends CacheableNode {
       this.modelHeight = 1000;
    }
 
-   @ObfuscatedName("u")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      signature = "(I)Lei;",
-      garbageValue = "1329079562"
+      signature = "(B)Ldk;",
+      garbageValue = "111"
    )
    @Export("getModel")
    protected Model getModel() {
       return null;
    }
 
-   @ObfuscatedName("cf")
+   @ObfuscatedName("cy")
    @Export("draw")
-   void draw(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
-      Model var10 = this.getModel();
-      if(var10 != null) {
-         this.modelHeight = var10.modelHeight;
-         var10.draw(var1, var2, var3, var4, var5, var6, var7, var8, var9);
+   void draw(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, long var9) {
+      Model var11 = this.getModel();
+      if(var11 != null) {
+         this.modelHeight = var11.modelHeight;
+         var11.draw(var1, var2, var3, var4, var5, var6, var7, var8, var9);
       }
 
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("x")
    @ObfuscatedSignature(
-      signature = "([I[IB)V",
-      garbageValue = "118"
+      signature = "(Ljava/lang/CharSequence;II[BII)I",
+      garbageValue = "2089291146"
    )
-   public static void method3051(int[] var0, int[] var1) {
-      if(var0 != null && var1 != null) {
-         class195.field2584 = var0;
-         OwnWorldComparator.field866 = new int[var0.length];
-         class319.field3930 = new byte[var0.length][][];
+   @Export("encodeStringCp1252")
+   public static int encodeStringCp1252(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
+      int var5 = var2 - var1;
 
-         for(int var2 = 0; var2 < class195.field2584.length; ++var2) {
-            class319.field3930[var2] = new byte[var1[var2]][];
+      for(int var6 = 0; var6 < var5; ++var6) {
+         char var7 = var0.charAt(var6 + var1);
+         if(var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
+            var3[var6 + var4] = (byte)var7;
+         } else if(var7 == 8364) {
+            var3[var6 + var4] = -128;
+         } else if(var7 == 8218) {
+            var3[var6 + var4] = -126;
+         } else if(var7 == 402) {
+            var3[var6 + var4] = -125;
+         } else if(var7 == 8222) {
+            var3[var6 + var4] = -124;
+         } else if(var7 == 8230) {
+            var3[var6 + var4] = -123;
+         } else if(var7 == 8224) {
+            var3[var6 + var4] = -122;
+         } else if(var7 == 8225) {
+            var3[var6 + var4] = -121;
+         } else if(var7 == 710) {
+            var3[var6 + var4] = -120;
+         } else if(var7 == 8240) {
+            var3[var6 + var4] = -119;
+         } else if(var7 == 352) {
+            var3[var6 + var4] = -118;
+         } else if(var7 == 8249) {
+            var3[var6 + var4] = -117;
+         } else if(var7 == 338) {
+            var3[var6 + var4] = -116;
+         } else if(var7 == 381) {
+            var3[var6 + var4] = -114;
+         } else if(var7 == 8216) {
+            var3[var6 + var4] = -111;
+         } else if(var7 == 8217) {
+            var3[var6 + var4] = -110;
+         } else if(var7 == 8220) {
+            var3[var6 + var4] = -109;
+         } else if(var7 == 8221) {
+            var3[var6 + var4] = -108;
+         } else if(var7 == 8226) {
+            var3[var6 + var4] = -107;
+         } else if(var7 == 8211) {
+            var3[var6 + var4] = -106;
+         } else if(var7 == 8212) {
+            var3[var6 + var4] = -105;
+         } else if(var7 == 732) {
+            var3[var6 + var4] = -104;
+         } else if(var7 == 8482) {
+            var3[var6 + var4] = -103;
+         } else if(var7 == 353) {
+            var3[var6 + var4] = -102;
+         } else if(var7 == 8250) {
+            var3[var6 + var4] = -101;
+         } else if(var7 == 339) {
+            var3[var6 + var4] = -100;
+         } else if(var7 == 382) {
+            var3[var6 + var4] = -98;
+         } else if(var7 == 376) {
+            var3[var6 + var4] = -97;
+         } else {
+            var3[var6 + var4] = 63;
          }
-
-      } else {
-         class195.field2584 = null;
-         OwnWorldComparator.field866 = null;
-         class319.field3930 = null;
       }
-   }
 
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "(III)I",
-      garbageValue = "-1868311539"
-   )
-   static final int method3058(int var0, int var1) {
-      if(var0 == -1) {
-         return 12345678;
-      } else {
-         var1 = (var0 & 127) * var1 / 128;
-         if(var1 < 2) {
-            var1 = 2;
-         } else if(var1 > 126) {
-            var1 = 126;
-         }
-
-         return (var0 & 65408) + var1;
-      }
+      return var5;
    }
 }

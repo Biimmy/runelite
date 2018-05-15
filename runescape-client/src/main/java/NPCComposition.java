@@ -4,182 +4,182 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jr")
+@ObfuscatedName("jj")
 @Implements("NPCComposition")
 public class NPCComposition extends CacheableNode {
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "Ljf;"
+      signature = "Liv;"
    )
    @Export("NpcDefinition_indexCache")
    public static IndexDataBase NpcDefinition_indexCache;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "Ljf;"
+      signature = "Liv;"
    )
    @Export("NpcDefinition_modelIndexCache")
    public static IndexDataBase NpcDefinition_modelIndexCache;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "Lhd;"
+      signature = "Lgj;"
    )
    @Export("npcs")
    static NodeCache npcs;
-   @ObfuscatedName("d")
+   @ObfuscatedName("b")
    @ObfuscatedSignature(
-      signature = "Lhd;"
+      signature = "Lgj;"
    )
    @Export("npcModelCache")
    static NodeCache npcModelCache;
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = 810016143
+      intValue = -168395161
    )
    @Export("id")
    public int id;
-   @ObfuscatedName("m")
+   @ObfuscatedName("n")
    @Export("name")
    public String name;
-   @ObfuscatedName("z")
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = -1191741209
+      intValue = 106071213
    )
    @Export("size")
    public int size;
-   @ObfuscatedName("i")
+   @ObfuscatedName("x")
    @Export("models")
    int[] models;
-   @ObfuscatedName("u")
+   @ObfuscatedName("j")
    @Export("additionalModels")
    int[] additionalModels;
-   @ObfuscatedName("x")
+   @ObfuscatedName("a")
    @ObfuscatedGetter(
-      intValue = -245521569
+      intValue = -864701749
    )
    @Export("standingAnimation")
    public int standingAnimation;
-   @ObfuscatedName("y")
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      intValue = -847438703
+      intValue = 116335143
    )
-   public int field3716;
-   @ObfuscatedName("a")
+   public int field3509;
+   @ObfuscatedName("d")
    @ObfuscatedGetter(
-      intValue = -1664514725
+      intValue = -359593807
    )
-   public int field3714;
-   @ObfuscatedName("w")
+   public int field3499;
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = -1399586949
+      intValue = 1295753849
    )
    @Export("walkingAnimation")
    public int walkingAnimation;
-   @ObfuscatedName("n")
+   @ObfuscatedName("p")
    @ObfuscatedGetter(
-      intValue = 1392574473
+      intValue = -562700529
    )
    @Export("rotate180Animation")
    public int rotate180Animation;
-   @ObfuscatedName("l")
+   @ObfuscatedName("g")
    @ObfuscatedGetter(
-      intValue = 282238707
+      intValue = 1082594129
    )
    @Export("rotate90RightAnimation")
    public int rotate90RightAnimation;
-   @ObfuscatedName("s")
+   @ObfuscatedName("y")
    @ObfuscatedGetter(
-      intValue = -447164707
+      intValue = -611649737
    )
    @Export("rotate90LeftAnimation")
    public int rotate90LeftAnimation;
-   @ObfuscatedName("v")
+   @ObfuscatedName("c")
    @Export("colors")
    short[] colors;
-   @ObfuscatedName("q")
+   @ObfuscatedName("e")
    @Export("modifiedColors")
    short[] modifiedColors;
-   @ObfuscatedName("r")
+   @ObfuscatedName("t")
    @Export("textureToReplace")
    short[] textureToReplace;
-   @ObfuscatedName("j")
+   @ObfuscatedName("u")
    @Export("textureToReplaceWith")
    short[] textureToReplaceWith;
-   @ObfuscatedName("b")
+   @ObfuscatedName("i")
    @Export("actions")
    public String[] actions;
-   @ObfuscatedName("g")
+   @ObfuscatedName("z")
    @Export("isMinimapVisible")
    public boolean isMinimapVisible;
-   @ObfuscatedName("f")
+   @ObfuscatedName("k")
    @ObfuscatedGetter(
-      intValue = -316620067
+      intValue = 108735845
    )
    @Export("combatLevel")
    public int combatLevel;
-   @ObfuscatedName("p")
+   @ObfuscatedName("r")
    @ObfuscatedGetter(
-      intValue = 1777996525
+      intValue = 2066846285
    )
    @Export("widthScale")
    int widthScale;
-   @ObfuscatedName("e")
+   @ObfuscatedName("v")
    @ObfuscatedGetter(
-      intValue = 1857324877
+      intValue = 1631856349
    )
    @Export("heightScale")
    int heightScale;
-   @ObfuscatedName("c")
+   @ObfuscatedName("o")
    @Export("isVisible")
    public boolean isVisible;
-   @ObfuscatedName("ab")
+   @ObfuscatedName("ai")
    @ObfuscatedGetter(
-      intValue = 869631619
+      intValue = 97689843
    )
    @Export("ambient")
    int ambient;
-   @ObfuscatedName("ap")
+   @ObfuscatedName("at")
    @ObfuscatedGetter(
-      intValue = -1068666911
+      intValue = -1705110531
    )
    @Export("contrast")
    int contrast;
-   @ObfuscatedName("ag")
+   @ObfuscatedName("ad")
    @ObfuscatedGetter(
-      intValue = 608267971
+      intValue = -1324227797
    )
    @Export("headIcon")
    public int headIcon;
-   @ObfuscatedName("at")
+   @ObfuscatedName("ac")
    @ObfuscatedGetter(
-      intValue = -261996981
+      intValue = -204190151
    )
    @Export("rotation")
    public int rotation;
-   @ObfuscatedName("ac")
+   @ObfuscatedName("ay")
    @Export("configs")
    public int[] configs;
-   @ObfuscatedName("al")
+   @ObfuscatedName("an")
    @ObfuscatedGetter(
-      intValue = 354105725
+      intValue = 132919095
    )
    @Export("varpIndex")
    int varpIndex;
-   @ObfuscatedName("ah")
+   @ObfuscatedName("as")
    @ObfuscatedGetter(
-      intValue = 450415395
+      intValue = 517239649
    )
    @Export("varp32Index")
    int varp32Index;
-   @ObfuscatedName("af")
-   public boolean field3724;
-   @ObfuscatedName("aq")
+   @ObfuscatedName("aw")
+   public boolean field3535;
+   @ObfuscatedName("ag")
    @Export("isClickable")
    public boolean isClickable;
-   @ObfuscatedName("ai")
-   public boolean field3738;
+   @ObfuscatedName("ah")
+   public boolean field3534;
    @ObfuscatedName("az")
    @ObfuscatedSignature(
-      signature = "Lha;"
+      signature = "Lgx;"
    )
    @Export("params")
    IterableHashTable params;
@@ -193,8 +193,8 @@ public class NPCComposition extends CacheableNode {
       this.name = "null";
       this.size = 1;
       this.standingAnimation = -1;
-      this.field3716 = -1;
-      this.field3714 = -1;
+      this.field3509 = -1;
+      this.field3499 = -1;
       this.walkingAnimation = -1;
       this.rotate180Animation = -1;
       this.rotate90RightAnimation = -1;
@@ -211,24 +211,24 @@ public class NPCComposition extends CacheableNode {
       this.rotation = 32;
       this.varpIndex = -1;
       this.varp32Index = -1;
-      this.field3724 = true;
+      this.field3535 = true;
       this.isClickable = true;
-      this.field3738 = false;
+      this.field3534 = false;
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-560586944"
+      signature = "(S)V",
+      garbageValue = "500"
    )
    @Export("post")
    void post() {
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "(Lgc;I)V",
-      garbageValue = "886263203"
+      signature = "(Lgy;I)V",
+      garbageValue = "-9980013"
    )
    @Export("decode")
    void decode(Buffer var1) {
@@ -242,10 +242,10 @@ public class NPCComposition extends CacheableNode {
       }
    }
 
-   @ObfuscatedName("d")
+   @ObfuscatedName("x")
    @ObfuscatedSignature(
-      signature = "(Lgc;II)V",
-      garbageValue = "-348981362"
+      signature = "(Lgy;II)V",
+      garbageValue = "-2118823050"
    )
    @Export("readNext")
    void readNext(Buffer var1, int var2) {
@@ -267,9 +267,9 @@ public class NPCComposition extends CacheableNode {
       } else if(var2 == 14) {
          this.walkingAnimation = var1.readUnsignedShort();
       } else if(var2 == 15) {
-         this.field3716 = var1.readUnsignedShort();
+         this.field3509 = var1.readUnsignedShort();
       } else if(var2 == 16) {
-         this.field3714 = var1.readUnsignedShort();
+         this.field3499 = var1.readUnsignedShort();
       } else if(var2 == 17) {
          this.walkingAnimation = var1.readUnsignedShort();
          this.rotate180Animation = var1.readUnsignedShort();
@@ -325,13 +325,13 @@ public class NPCComposition extends CacheableNode {
          this.rotation = var1.readUnsignedShort();
       } else if(var2 != 106 && var2 != 118) {
          if(var2 == 107) {
-            this.field3724 = false;
+            this.field3535 = false;
          } else if(var2 == 109) {
             this.isClickable = false;
          } else if(var2 == 111) {
-            this.field3738 = true;
+            this.field3534 = true;
          } else if(var2 == 249) {
-            this.params = class28.readStringIntParameters(var1, this.params);
+            this.params = CacheFile.readStringIntParameters(var1, this.params);
          }
       } else {
          this.varpIndex = var1.readUnsignedShort();
@@ -367,10 +367,10 @@ public class NPCComposition extends CacheableNode {
 
    }
 
-   @ObfuscatedName("h")
+   @ObfuscatedName("j")
    @ObfuscatedSignature(
-      signature = "(Lke;ILke;IB)Lei;",
-      garbageValue = "0"
+      signature = "(Ljh;ILjh;IB)Ldk;",
+      garbageValue = "-62"
    )
    @Export("getModel")
    public final Model getModel(Sequence var1, int var2, Sequence var3, int var4) {
@@ -396,7 +396,7 @@ public class NPCComposition extends CacheableNode {
 
             int var9;
             for(var9 = 0; var9 < this.models.length; ++var9) {
-               var8[var9] = ModelData.method2645(NpcDefinition_modelIndexCache, this.models[var9], 0);
+               var8[var9] = ModelData.method2619(NpcDefinition_modelIndexCache, this.models[var9], 0);
             }
 
             ModelData var11;
@@ -414,7 +414,7 @@ public class NPCComposition extends CacheableNode {
 
             if(this.textureToReplace != null) {
                for(var9 = 0; var9 < this.textureToReplace.length; ++var9) {
-                  var11.method2613(this.textureToReplace[var9], this.textureToReplaceWith[var9]);
+                  var11.method2632(this.textureToReplace[var9], this.textureToReplaceWith[var9]);
                }
             }
 
@@ -441,15 +441,15 @@ public class NPCComposition extends CacheableNode {
       }
    }
 
-   @ObfuscatedName("m")
+   @ObfuscatedName("a")
    @ObfuscatedSignature(
-      signature = "(B)Ldg;",
-      garbageValue = "-19"
+      signature = "(B)Ldo;",
+      garbageValue = "14"
    )
-   public final ModelData method5148() {
+   public final ModelData method5174() {
       if(this.configs != null) {
          NPCComposition var1 = this.transform();
-         return var1 == null?null:var1.method5148();
+         return var1 == null?null:var1.method5174();
       } else if(this.additionalModels == null) {
          return null;
       } else {
@@ -467,7 +467,7 @@ public class NPCComposition extends CacheableNode {
             ModelData[] var6 = new ModelData[this.additionalModels.length];
 
             for(int var3 = 0; var3 < this.additionalModels.length; ++var3) {
-               var6[var3] = ModelData.method2645(NpcDefinition_modelIndexCache, this.additionalModels[var3], 0);
+               var6[var3] = ModelData.method2619(NpcDefinition_modelIndexCache, this.additionalModels[var3], 0);
             }
 
             ModelData var7;
@@ -486,7 +486,7 @@ public class NPCComposition extends CacheableNode {
 
             if(this.textureToReplace != null) {
                for(var4 = 0; var4 < this.textureToReplace.length; ++var4) {
-                  var7.method2613(this.textureToReplace[var4], this.textureToReplaceWith[var4]);
+                  var7.method2632(this.textureToReplace[var4], this.textureToReplaceWith[var4]);
                }
             }
 
@@ -495,18 +495,18 @@ public class NPCComposition extends CacheableNode {
       }
    }
 
-   @ObfuscatedName("z")
+   @ObfuscatedName("l")
    @ObfuscatedSignature(
-      signature = "(B)Ljr;",
-      garbageValue = "120"
+      signature = "(I)Ljj;",
+      garbageValue = "1865410382"
    )
    @Export("transform")
    public final NPCComposition transform() {
       int var1 = -1;
       if(this.varpIndex != -1) {
-         var1 = DynamicObject.getVarbit(this.varpIndex);
+         var1 = class138.getVarbit(this.varpIndex);
       } else if(this.varp32Index != -1) {
-         var1 = class237.clientVarps[this.varp32Index];
+         var1 = class225.clientVarps[this.varp32Index];
       }
 
       int var2;
@@ -516,35 +516,35 @@ public class NPCComposition extends CacheableNode {
          var2 = this.configs[this.configs.length - 1];
       }
 
-      return var2 != -1?class234.getNpcDefinition(var2):null;
+      return var2 != -1?class59.getNpcDefinition(var2):null;
    }
 
-   @ObfuscatedName("i")
+   @ObfuscatedName("d")
    @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "2054152504"
+      signature = "(B)Z",
+      garbageValue = "64"
    )
-   public boolean method5123() {
+   public boolean method5194() {
       if(this.configs == null) {
          return true;
       } else {
          int var1 = -1;
          if(this.varpIndex != -1) {
-            var1 = DynamicObject.getVarbit(this.varpIndex);
+            var1 = class138.getVarbit(this.varpIndex);
          } else if(this.varp32Index != -1) {
-            var1 = class237.clientVarps[this.varp32Index];
+            var1 = class225.clientVarps[this.varp32Index];
          }
 
          return var1 >= 0 && var1 < this.configs.length?this.configs[var1] != -1:this.configs[this.configs.length - 1] != -1;
       }
    }
 
-   @ObfuscatedName("u")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      signature = "(IIB)I",
-      garbageValue = "-71"
+      signature = "(III)I",
+      garbageValue = "-1161234943"
    )
-   public int method5124(int var1, int var2) {
+   public int method5196(int var1, int var2) {
       IterableHashTable var4 = this.params;
       int var3;
       if(var4 == null) {
@@ -561,12 +561,12 @@ public class NPCComposition extends CacheableNode {
       return var3;
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("p")
    @ObfuscatedSignature(
       signature = "(ILjava/lang/String;I)Ljava/lang/String;",
-      garbageValue = "-820378305"
+      garbageValue = "-370870861"
    )
-   public String method5125(int var1, String var2) {
-      return WorldMapType1.method309(this.params, var1, var2);
+   public String method5175(int var1, String var2) {
+      return CombatInfoListHolder.method1822(this.params, var1, var2);
    }
 }

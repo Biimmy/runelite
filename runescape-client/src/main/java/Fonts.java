@@ -1,45 +1,45 @@
 import java.util.HashMap;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kc")
+@ObfuscatedName("kl")
 @Implements("Fonts")
 public class Fonts {
-   @ObfuscatedName("ff")
-   @ObfuscatedSignature(
-      signature = "[Lld;"
+   @ObfuscatedName("l")
+   @ObfuscatedGetter(
+      intValue = -1286566079
    )
-   @Export("headIconsPrayer")
-   static SpritePixels[] headIconsPrayer;
-   @ObfuscatedName("o")
+   static int field3692;
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "Ljf;"
+      signature = "Liv;"
    )
-   IndexDataBase field3892;
-   @ObfuscatedName("k")
+   IndexDataBase field3694;
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "Ljf;"
+      signature = "Liv;"
    )
-   IndexDataBase field3890;
-   @ObfuscatedName("t")
+   IndexDataBase field3689;
+   @ObfuscatedName("q")
    @Export("map")
    HashMap map;
 
    @ObfuscatedSignature(
-      signature = "(Ljf;Ljf;)V"
+      signature = "(Liv;Liv;)V"
    )
    public Fonts(IndexDataBase var1, IndexDataBase var2) {
-      this.field3892 = var1;
-      this.field3890 = var2;
+      this.field3694 = var1;
+      this.field3689 = var2;
       this.map = new HashMap();
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "([Lkp;I)Ljava/util/HashMap;",
-      garbageValue = "-1359608733"
+      signature = "([Lkt;I)Ljava/util/HashMap;",
+      garbageValue = "959623838"
    )
    @Export("createMap")
    public HashMap createMap(FontName[] var1) {
@@ -51,12 +51,7 @@ public class Fonts {
          if(this.map.containsKey(var5)) {
             var2.put(var5, this.map.get(var5));
          } else {
-            IndexDataBase var7 = this.field3892;
-            IndexDataBase var8 = this.field3890;
-            String var9 = var5.field3885;
-            int var10 = var7.getFile(var9);
-            int var11 = var7.getChild(var10, "");
-            Font var6 = FontName.method5488(var7, var8, var10, var11);
+            Font var6 = class313.method5759(this.field3694, this.field3689, var5.field3686, "");
             if(var6 != null) {
                this.map.put(var5, var6);
                var2.put(var5, var6);

@@ -28,7 +28,6 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -73,17 +72,10 @@ public class ItemController
 		ItemEntry item = itemService.getItem(itemId);
 		if (item != null)
 		{
-			response.setHeader(RUNELITE_CACHE, "HIT");
 			return item.toItem();
 		}
 
-		item = itemService.fetchItem(itemId);
-		if (item != null)
-		{
-			response.setHeader(RUNELITE_CACHE, "MISS");
-			return item.toItem();
-		}
-
+		itemService.queueItem(itemId);
 		return null;
 	}
 
@@ -127,7 +119,6 @@ public class ItemController
 		}
 
 		Instant now = Instant.now();
-		boolean hit = true;
 
 		if (time != null && time.isAfter(now))
 		{
@@ -137,16 +128,11 @@ public class ItemController
 		ItemEntry item = itemService.getItem(itemId);
 		if (item == null)
 		{
-			item = itemService.fetchItem(itemId);
-			hit = false;
-
-			if (item == null)
-			{
-				cachedEmpty.put(itemId, itemId);
-				return ResponseEntity.notFound()
-					.header(RUNELITE_CACHE, "MISS")
-					.build();
-			}
+			itemService.queueItem(itemId); // queue lookup
+			cachedEmpty.put(itemId, itemId); // cache empty
+			return ResponseEntity.notFound()
+				.header(RUNELITE_CACHE, "MISS")
+				.build();
 		}
 
 		PriceEntry priceEntry = itemService.getPrice(itemId, time);
@@ -164,28 +150,18 @@ public class ItemController
 		else if (priceEntry == null)
 		{
 			// Price is unknown
-			List<PriceEntry> prices = itemService.fetchPrice(itemId);
-
-			if (prices == null || prices.isEmpty())
-			{
-				cachedEmpty.put(itemId, itemId);
-				return ResponseEntity.notFound()
-					.header(RUNELITE_CACHE, "MISS")
-					.build();
-			}
-
-			// Get the most recent price
-			priceEntry = prices.get(prices.size() - 1);
-			hit = false;
+			itemService.queuePriceLookup(itemId); // queue lookup
+			cachedEmpty.put(itemId, itemId);
+			return ResponseEntity.notFound()
+				.header(RUNELITE_CACHE, "MISS")
+				.build();
 		}
-		else
+
+		Instant cacheTime = now.minus(CACHE_DUATION);
+		if (priceEntry.getFetched_time().isBefore(cacheTime))
 		{
-			Instant cacheTime = now.minus(CACHE_DUATION);
-			if (priceEntry.getFetched_time().isBefore(cacheTime))
-			{
-				// Queue a check for the price
-				itemService.queuePriceLookup(itemId);
-			}
+			// Queue a check for the price
+			itemService.queuePriceLookup(itemId);
 		}
 
 		ItemPrice itemPrice = new ItemPrice();
@@ -194,7 +170,6 @@ public class ItemController
 		itemPrice.setTime(priceEntry.getTime());
 
 		return ResponseEntity.ok()
-			.header(RUNELITE_CACHE, hit ? "HIT" : "MISS")
 			.cacheControl(CacheControl.maxAge(30, TimeUnit.MINUTES).cachePublic())
 			.body(itemPrice);
 	}
@@ -221,24 +196,20 @@ public class ItemController
 			itemIds = Arrays.copyOf(itemIds, MAX_BATCH_LOOKUP);
 		}
 
-		List<ItemPrice> itemPrices = new ArrayList<>(itemIds.length);
-		for (int itemId : itemIds)
-		{
-			ItemEntry item = itemService.getItem(itemId);
-			PriceEntry priceEntry = itemService.getPrice(itemId, null);
+		List<PriceEntry> prices = itemService.getPrices(itemIds);
 
-			if (item == null || priceEntry == null)
+		return prices.stream()
+			.map(priceEntry ->
 			{
-				continue;
-			}
+				Item item = new Item();
+				item.setId(priceEntry.getItem()); // fake item
 
-			ItemPrice itemPrice = new ItemPrice();
-			itemPrice.setItem(item.toItem());
-			itemPrice.setPrice(priceEntry.getPrice());
-			itemPrice.setTime(priceEntry.getTime());
-			itemPrices.add(itemPrice);
-		}
-
-		return itemPrices.toArray(new ItemPrice[itemPrices.size()]);
+				ItemPrice itemPrice = new ItemPrice();
+				itemPrice.setItem(item);
+				itemPrice.setPrice(priceEntry.getPrice());
+				itemPrice.setTime(priceEntry.getTime());
+				return itemPrice;
+			})
+			.toArray(ItemPrice[]::new);
 	}
 }

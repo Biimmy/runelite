@@ -24,8 +24,8 @@
  */
 package net.runelite.client.plugins.kingdomofmiscellania;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.eventbus.Subscribe;
-import com.google.common.primitives.Ints;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Varbits;
-import net.runelite.api.events.MapRegionChanged;
+import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -47,7 +47,7 @@ import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 @Slf4j
 public class KingdomPlugin extends Plugin
 {
-	private static final int[] KINGDOM_REGION = {9787, 9788, 9789, 10043, 10044, 10045, 10299, 10300, 10301};
+	private static final ImmutableSet<Integer> KINGDOM_REGION = ImmutableSet.of(10044, 10300);
 
 	@Inject
 	private Client client;
@@ -79,15 +79,18 @@ public class KingdomPlugin extends Plugin
 	@Subscribe
 	public void onVarbitChanged(VarbitChanged event)
 	{
-		favor = client.getSetting(Varbits.KINGDOM_FAVOR);
-		coffer = client.getSetting(Varbits.KINGDOM_COFFER);
+		favor = client.getVar(Varbits.KINGDOM_FAVOR);
+		coffer = client.getVar(Varbits.KINGDOM_COFFER);
 		processInfobox();
 	}
 
 	@Subscribe
-	public void onRegionChanged(MapRegionChanged event)
+	public void onGameStateChanged(GameStateChanged event)
 	{
-		processInfobox();
+		if (event.getGameState() == GameState.LOGGED_IN)
+		{
+			processInfobox();
+		}
 	}
 
 	private void processInfobox()
@@ -125,12 +128,12 @@ public class KingdomPlugin extends Plugin
 
 	private boolean isInKingdom()
 	{
-		return Ints.indexOf(client.getMapRegions(), KINGDOM_REGION) >= 0;
+		return KINGDOM_REGION.contains(client.getLocalPlayer().getWorldLocation().getRegionID());
 	}
 
 	private boolean hasCompletedQuest()
 	{
-		return client.getSetting(Varbits.THRONE_OF_MISCELLANIA_QUEST) == 1;
+		return client.getVar(Varbits.THRONE_OF_MISCELLANIA_QUEST) == 1;
 	}
 
 	static int getFavorPercent(int favor)

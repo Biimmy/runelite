@@ -1,20 +1,24 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gk")
+@ObfuscatedName("fv")
 @Implements("Huffman")
 public class Huffman {
-   @ObfuscatedName("at")
-   static int[] field2513;
-   @ObfuscatedName("o")
+   @ObfuscatedName("ix")
+   @ObfuscatedGetter(
+      intValue = -1176382725
+   )
+   static int field2296;
+   @ObfuscatedName("w")
    @Export("masks")
    int[] masks;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @Export("bits")
    byte[] bits;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @Export("keys")
    int[] keys;
 
@@ -101,10 +105,10 @@ public class Huffman {
 
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "([BII[BII)I",
-      garbageValue = "-669173026"
+      garbageValue = "-452407484"
    )
    @Export("compress")
    public int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -122,7 +126,7 @@ public class Huffman {
          int var11 = var7 >> 3;
          int var12 = var7 & 7;
          var6 &= -var12 >> 31;
-         int var13 = (var12 + var10 - 1 >> 3) + var11;
+         int var13 = (var10 + var12 - 1 >> 3) + var11;
          var12 += 24;
          var4[var11] = (byte)(var6 |= var9 >>> var12);
          if(var11 < var13) {
@@ -152,10 +156,10 @@ public class Huffman {
       return (var7 + 7 >> 3) - var5;
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
       signature = "([BI[BIIB)I",
-      garbageValue = "20"
+      garbageValue = "4"
    )
    @Export("decompress")
    public int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -296,24 +300,12 @@ public class Huffman {
       }
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("y")
    @ObfuscatedSignature(
-      signature = "(II)Ljc;",
-      garbageValue = "888122940"
+      signature = "(I)V",
+      garbageValue = "-1634844291"
    )
-   public static class281 method3457(int var0) {
-      class281 var1 = (class281)class281.field3568.get((long)var0);
-      if(var1 != null) {
-         return var1;
-      } else {
-         byte[] var2 = class281.field3585.getConfigData(32, var0);
-         var1 = new class281();
-         if(var2 != null) {
-            var1.method4965(new Buffer(var2));
-         }
-
-         class281.field3568.put(var1, (long)var0);
-         return var1;
-      }
+   static final void method3498() {
+      CollisionData.method3448("You can\'t add yourself to your own friend list");
    }
 }

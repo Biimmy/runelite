@@ -1,51 +1,56 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
 
-@ObfuscatedName("kz")
+@ObfuscatedName("km")
 @Implements("Name")
 public class Name implements Comparable {
-   @ObfuscatedName("o")
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      intValue = -764982541
+   )
+   static int field3662;
+   @ObfuscatedName("w")
    @Export("name")
    String name;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @Export("cleanName")
    String cleanName;
 
    @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;Llh;)V"
+      signature = "(Ljava/lang/String;Lla;)V"
    )
    public Name(String var1, JagexLoginType var2) {
       this.name = var1;
-      this.cleanName = class57.method861(var1, var2);
+      this.cleanName = SceneTilePaint.method2898(var1, var2);
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(I)Ljava/lang/String;",
-      garbageValue = "-328261912"
+      signature = "(B)Ljava/lang/String;",
+      garbageValue = "-69"
    )
    @Export("getName")
    public String getName() {
       return this.name;
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(B)Z",
-      garbageValue = "-54"
+      signature = "(I)Z",
+      garbageValue = "-1957595085"
    )
    @Export("isCleanNameValid")
    public boolean isCleanNameValid() {
       return this.cleanName != null;
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "(Lkz;I)I",
-      garbageValue = "1291402109"
+      signature = "(Lkm;I)I",
+      garbageValue = "-1019319110"
    )
    @Export("compareCleanName")
    public int compareCleanName(Name var1) {
@@ -65,21 +70,11 @@ public class Name implements Comparable {
       return this.cleanName == null?0:this.cleanName.hashCode();
    }
 
-   public String toString() {
-      return this.getName();
-   }
-
    public int compareTo(Object var1) {
       return this.compareCleanName((Name)var1);
    }
 
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)Ljava/lang/Class;",
-      garbageValue = "1155175199"
-   )
-   @Export("loadClassFromDescriptor")
-   public static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
-      return var0.equals("B")?Byte.TYPE:(var0.equals("I")?Integer.TYPE:(var0.equals("S")?Short.TYPE:(var0.equals("J")?Long.TYPE:(var0.equals("Z")?Boolean.TYPE:(var0.equals("F")?Float.TYPE:(var0.equals("D")?Double.TYPE:(var0.equals("C")?Character.TYPE:(var0.equals("void")?Void.TYPE:Reflection.findClass(var0)))))))));
+   public String toString() {
+      return this.getName();
    }
 }

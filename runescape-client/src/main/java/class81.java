@@ -1,107 +1,136 @@
-import java.util.Calendar;
+import java.io.File;
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cl")
+@ObfuscatedName("ct")
 public class class81 {
-   @ObfuscatedName("rl")
-   @ObfuscatedGetter(
-      intValue = 1392282369
-   )
-   static int field1287;
-   @ObfuscatedName("t")
-   @Export("scriptLocalInts")
-   static int[] scriptLocalInts;
-   @ObfuscatedName("d")
-   @Export("scriptLocalStrings")
-   static String[] scriptLocalStrings;
-   @ObfuscatedName("h")
-   static int[] field1282;
-   @ObfuscatedName("m")
-   @Export("SHAPE_VERTICES")
-   static int[][] SHAPE_VERTICES;
-   @ObfuscatedName("z")
-   @Export("intStack")
-   static int[] intStack;
-   @ObfuscatedName("u")
-   @Export("scriptStringStack")
-   static String[] scriptStringStack;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = 1788554331
-   )
-   @Export("scriptStackCount")
-   static int scriptStackCount;
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "[Lbo;"
-   )
-   @Export("scriptStack")
-   static ScriptState[] scriptStack;
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lin;"
-   )
-   static Widget field1285;
-   @ObfuscatedName("l")
-   static Calendar field1284;
-   @ObfuscatedName("s")
-   static final String[] field1291;
    @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 311283157
+   static byte[] field1183;
+   @ObfuscatedName("b")
+   static byte[] field1177;
+   @ObfuscatedName("f")
+   @ObfuscatedSignature(
+      signature = "[Lgy;"
    )
-   static int field1288;
+   static Buffer[] field1179;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 1358551967
+   )
+   @Export("playerIndexesCount")
+   static int playerIndexesCount;
+   @ObfuscatedName("h")
+   @Export("playerIndices")
+   static int[] playerIndices;
+   @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = 1972551019
+   )
+   static int field1182;
+   @ObfuscatedName("j")
+   static int[] field1175;
+   @ObfuscatedName("a")
+   @Export("Players_regions")
+   static int[] Players_regions;
+   @ObfuscatedName("l")
+   @Export("Players_orientations")
+   static int[] Players_orientations;
+   @ObfuscatedName("d")
+   @Export("Players_targetIndices")
+   static int[] Players_targetIndices;
+   @ObfuscatedName("s")
+   @ObfuscatedGetter(
+      intValue = 1296694293
+   )
+   static int field1176;
+   @ObfuscatedName("p")
+   static int[] field1188;
+   @ObfuscatedName("g")
+   @ObfuscatedSignature(
+      signature = "Lgy;"
+   )
+   static Buffer field1189;
+   @ObfuscatedName("r")
+   static int[] field1178;
+   @ObfuscatedName("dm")
+   @ObfuscatedGetter(
+      intValue = 1649712923
+   )
+   static int field1192;
+   @ObfuscatedName("fx")
+   @ObfuscatedSignature(
+      signature = "[Llc;"
+   )
+   @Export("mapDots")
+   static SpritePixels[] mapDots;
 
    static {
-      field1282 = new int[5];
-      SHAPE_VERTICES = new int[5][5000];
-      intStack = new int[1000];
-      scriptStringStack = new String[1000];
-      scriptStackCount = 0;
-      scriptStack = new ScriptState[50];
-      field1284 = Calendar.getInstance();
-      field1291 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-      field1288 = 0;
+      field1183 = new byte[2048];
+      field1177 = new byte[2048];
+      field1179 = new Buffer[2048];
+      playerIndexesCount = 0;
+      playerIndices = new int[2048];
+      field1182 = 0;
+      field1175 = new int[2048];
+      Players_regions = new int[2048];
+      Players_orientations = new int[2048];
+      Players_targetIndices = new int[2048];
+      field1176 = 0;
+      field1188 = new int[2048];
+      field1189 = new Buffer(new byte[5000]);
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(CB)C",
-      garbageValue = "1"
+      signature = "(Ljava/io/File;Ljava/io/File;I)V",
+      garbageValue = "1970983576"
    )
-   static char method1849(char var0) {
-      return var0 != 181 && var0 != 131?Character.toTitleCase(var0):var0;
-   }
-
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      signature = "(IIIZIZI)V",
-      garbageValue = "-1939266148"
-   )
-   static void method1848(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
-      if(var0 < var1) {
-         int var6 = (var0 + var1) / 2;
-         int var7 = var0;
-         World var8 = World.worldList[var6];
-         World.worldList[var6] = World.worldList[var1];
-         World.worldList[var1] = var8;
-
-         for(int var9 = var0; var9 < var1; ++var9) {
-            if(Client.method1503(World.worldList[var9], var8, var2, var3, var4, var5) <= 0) {
-               World var10 = World.worldList[var9];
-               World.worldList[var9] = World.worldList[var7];
-               World.worldList[var7++] = var10;
-            }
+   public static void method1921(File var0, File var1) {
+      try {
+         FileOnDisk var2 = new FileOnDisk(class155.jagexClDat, "rw", 10000L);
+         Buffer var3 = new Buffer(500);
+         var3.putByte(3);
+         var3.putByte(var1 != null?1:0);
+         var3.putCESU8(var0.getPath());
+         if(var1 != null) {
+            var3.putCESU8("");
          }
 
-         World.worldList[var1] = World.worldList[var7];
-         World.worldList[var7] = var8;
-         method1848(var0, var7 - 1, var2, var3, var4, var5);
-         method1848(var7 + 1, var1, var2, var3, var4, var5);
+         var2.write(var3.payload, 0, var3.offset);
+         var2.close();
+      } catch (IOException var4) {
+         var4.printStackTrace();
       }
 
+   }
+
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      signature = "(Liv;Liv;Liv;B)V",
+      garbageValue = "-124"
+   )
+   public static void method1923(IndexDataBase var0, IndexDataBase var1, IndexDataBase var2) {
+      class267.field3386 = var0;
+      class177.field2314 = var1;
+      class267.field3366 = var2;
+   }
+
+   @ObfuscatedName("q")
+   @ObfuscatedSignature(
+      signature = "(II)I",
+      garbageValue = "983127599"
+   )
+   @Export("nextPowerOfTwo")
+   public static int nextPowerOfTwo(int var0) {
+      --var0;
+      var0 |= var0 >>> 1;
+      var0 |= var0 >>> 2;
+      var0 |= var0 >>> 4;
+      var0 |= var0 >>> 8;
+      var0 |= var0 >>> 16;
+      return var0 + 1;
    }
 }

@@ -42,6 +42,7 @@ import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.NavigationButton;
@@ -68,6 +69,9 @@ public class KourendLibraryPlugin extends Plugin
 	@Inject
 	private KourendLibraryOverlay overlay;
 
+	@Inject
+	private ItemManager itemManager;
+
 	private KourendLibraryPanel panel;
 	private NavigationButton navButton;
 
@@ -77,6 +81,8 @@ public class KourendLibraryPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+		Book.fillImages(itemManager);
+
 		panel = injector.getInstance(KourendLibraryPanel.class);
 		panel.init();
 
@@ -112,7 +118,7 @@ public class KourendLibraryPlugin extends Plugin
 	{
 		if (MenuAction.GAME_OBJECT_FIRST_OPTION == menuOpt.getMenuAction() && menuOpt.getMenuTarget().contains("Bookshelf"))
 		{
-			lastBookcaseClick = WorldPoint.fromRegion(client, menuOpt.getId() & 127, menuOpt.getId() >> 7 & 127, client.getPlane());
+			lastBookcaseClick = WorldPoint.fromRegion(client, menuOpt.getActionParam(), menuOpt.getWidgetId(), client.getPlane());
 		}
 	}
 

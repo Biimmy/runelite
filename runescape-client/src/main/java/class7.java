@@ -1,127 +1,116 @@
+import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("i")
-public class class7 {
-   @ObfuscatedName("o")
-   @Export("drawBoundingBoxes3D")
-   public static boolean drawBoundingBoxes3D;
-   @ObfuscatedName("k")
-   @Export("drawBoundingBoxes2D")
-   public static boolean drawBoundingBoxes2D;
-   @ObfuscatedName("t")
-   @Export("drawObjectGeometry2D")
-   public static boolean drawObjectGeometry2D;
-   @ObfuscatedName("d")
+@ObfuscatedName("x")
+final class class7 implements Comparator {
+   @ObfuscatedName("kw")
    @ObfuscatedSignature(
-      signature = "La;"
+      signature = "Lhl;"
    )
-   @Export("boundingBox3DDrawMode")
-   public static BoundingBox3DDrawMode boundingBox3DDrawMode;
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      signature = "Lhm;"
-   )
-   @Export("boundingBoxes")
-   public static CombatInfoList boundingBoxes;
-   @ObfuscatedName("fh")
-   @ObfuscatedSignature(
-      signature = "Lld;"
-   )
-   @Export("compass")
-   static SpritePixels compass;
-   @ObfuscatedName("kf")
-   @ObfuscatedSignature(
-      signature = "Lin;"
-   )
-   static Widget field234;
+   static Widget field42;
 
-   static {
-      drawBoundingBoxes3D = false;
-      drawBoundingBoxes2D = false;
-      drawObjectGeometry2D = false;
-      boundingBox3DDrawMode = BoundingBox3DDrawMode.ON_MOUSEOVER;
-      boundingBoxes = new CombatInfoList();
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      signature = "(Lq;Lq;I)I",
+      garbageValue = "-641386920"
+   )
+   int method79(GrandExchangeEvent var1, GrandExchangeEvent var2) {
+      return var1.field10 < var2.field10?-1:(var1.field10 == var2.field10?0:1);
    }
 
-   @ObfuscatedName("o")
+   public int compare(Object var1, Object var2) {
+      return this.method79((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
+   }
+
+   public boolean equals(Object var1) {
+      return super.equals(var1);
+   }
+
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;I)Z",
-      garbageValue = "186026116"
+      signature = "([Lgk;IB)Lgk;",
+      garbageValue = "64"
    )
-   public static boolean method27(CharSequence var0) {
-      boolean var2 = false;
-      boolean var3 = false;
-      int var4 = 0;
-      int var5 = var0.length();
-      int var6 = 0;
+   @Export("forOrdinal")
+   public static Enumerated forOrdinal(Enumerated[] var0, int var1) {
+      Enumerated[] var2 = var0;
 
-      boolean var1;
-      while(true) {
-         if(var6 >= var5) {
-            var1 = var3;
-            break;
+      for(int var3 = 0; var3 < var2.length; ++var3) {
+         Enumerated var4 = var2[var3];
+         if(var1 == var4.rsOrdinal()) {
+            return var4;
          }
-
-         label84: {
-            char var7 = var0.charAt(var6);
-            if(var6 == 0) {
-               if(var7 == '-') {
-                  var2 = true;
-                  break label84;
-               }
-
-               if(var7 == '+') {
-                  break label84;
-               }
-            }
-
-            int var9;
-            if(var7 >= '0' && var7 <= '9') {
-               var9 = var7 - '0';
-            } else if(var7 >= 'A' && var7 <= 'Z') {
-               var9 = var7 - '7';
-            } else {
-               if(var7 < 'a' || var7 > 'z') {
-                  var1 = false;
-                  break;
-               }
-
-               var9 = var7 - 'W';
-            }
-
-            if(var9 >= 10) {
-               var1 = false;
-               break;
-            }
-
-            if(var2) {
-               var9 = -var9;
-            }
-
-            int var8 = var9 + var4 * 10;
-            if(var4 != var8 / 10) {
-               var1 = false;
-               break;
-            }
-
-            var4 = var8;
-            var3 = true;
-         }
-
-         ++var6;
       }
 
-      return var1;
+      return null;
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(Ljf;B)V",
-      garbageValue = "0"
+      signature = "(IIB)I",
+      garbageValue = "103"
    )
-   public static void method29(IndexDataBase var0) {
-      class279.field3552 = var0;
+   static int method87(int var0, int var1) {
+      if(var0 == -2) {
+         return 12345678;
+      } else if(var0 == -1) {
+         if(var1 < 0) {
+            var1 = 0;
+         } else if(var1 > 127) {
+            var1 = 127;
+         }
+
+         var1 = 127 - var1;
+         return var1;
+      } else {
+         var1 = (var0 & 127) * var1 / 128;
+         if(var1 < 2) {
+            var1 = 2;
+         } else if(var1 > 126) {
+            var1 = 126;
+         }
+
+         return (var0 & 65408) + var1;
+      }
+   }
+
+   @ObfuscatedName("hy")
+   @ObfuscatedSignature(
+      signature = "(Lbl;B)V",
+      garbageValue = "121"
+   )
+   static final void method85(PendingSpawn var0) {
+      long var1 = 0L;
+      int var3 = -1;
+      int var4 = 0;
+      int var5 = 0;
+      if(var0.type == 0) {
+         var1 = ScriptEvent.region.method2927(var0.level, var0.x, var0.y);
+      }
+
+      if(var0.type == 1) {
+         var1 = ScriptEvent.region.method2928(var0.level, var0.x, var0.y);
+      }
+
+      if(var0.type == 2) {
+         var1 = ScriptEvent.region.method3045(var0.level, var0.x, var0.y);
+      }
+
+      if(var0.type == 3) {
+         var1 = ScriptEvent.region.method2930(var0.level, var0.x, var0.y);
+      }
+
+      if(var1 != 0L) {
+         int var6 = ScriptEvent.region.method2931(var0.level, var0.x, var0.y, var1);
+         var3 = class8.method93(var1);
+         var4 = var6 & 31;
+         var5 = var6 >> 6 & 3;
+      }
+
+      var0.field870 = var3;
+      var0.field872 = var4;
+      var0.field871 = var5;
    }
 }

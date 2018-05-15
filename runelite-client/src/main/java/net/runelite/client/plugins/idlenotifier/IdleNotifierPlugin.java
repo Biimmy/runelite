@@ -36,6 +36,7 @@ import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Player;
 import net.runelite.api.Skill;
+import net.runelite.api.Varbits;
 import net.runelite.api.events.AnimationChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
@@ -106,6 +107,7 @@ public class IdleNotifierPlugin extends Plugin
 			case WOODCUTTING_RUNE:
 			case WOODCUTTING_DRAGON:
 			case WOODCUTTING_INFERNAL:
+			case WOODCUTTING_3A_AXE:
 			/* Cooking(Fire, Range) */
 			case COOKING_FIRE:
 			case COOKING_RANGE:
@@ -145,9 +147,11 @@ public class IdleNotifierPlugin extends Plugin
 			case FISHING_DRAGON_HARPOON:
 			case FISHING_CAGE:
 			case FISHING_POLE_CAST:
+			case FISHING_INFERNAL_HARPOON:
 			case FISHING_OILY_ROD:
 			case FISHING_KARAMBWAN:
 			case FISHING_CRUSHING_INFERNAL_EELS:
+			case FISHING_BAREHAND:
 			/* Mining(Normal) */
 			case MINING_BRONZE_PICKAXE:
 			case MINING_IRON_PICKAXE:
@@ -159,6 +163,7 @@ public class IdleNotifierPlugin extends Plugin
 			case MINING_DRAGON_PICKAXE:
 			case MINING_DRAGON_PICKAXE_ORN:
 			case MINING_INFERNAL_PICKAXE:
+			case MINING_3A_PICKAXE:
 			/* Mining(Motherlode) */
 			case MINING_MOTHERLODE_BRONZE:
 			case MINING_MOTHERLODE_IRON:
@@ -170,6 +175,7 @@ public class IdleNotifierPlugin extends Plugin
 			case MINING_MOTHERLODE_DRAGON:
 			case MINING_MOTHERLODE_DRAGON_ORN:
 			case MINING_MOTHERLODE_INFERNAL:
+			case MINING_MOTHERLODE_3A:
 			/* Herblore */
 			case HERBLORE_POTIONMAKING:
 			case HERBLORE_MAKE_TAR:
@@ -249,9 +255,13 @@ public class IdleNotifierPlugin extends Plugin
 
 	private boolean checkLowHitpoints()
 	{
+		if (config.getHitpointsThreshold() == 0)
+		{
+			return false;
+		}
 		if (client.getRealSkillLevel(Skill.HITPOINTS) > config.getHitpointsThreshold())
 		{
-			if (client.getBoostedSkillLevel(Skill.HITPOINTS) <= config.getHitpointsThreshold())
+			if (client.getBoostedSkillLevel(Skill.HITPOINTS) + client.getVar(Varbits.NMZ_ABSORPTION) <= config.getHitpointsThreshold())
 			{
 				if (!notifyHitpoints)
 				{
@@ -270,6 +280,10 @@ public class IdleNotifierPlugin extends Plugin
 
 	private boolean checkLowPrayer()
 	{
+		if (config.getPrayerThreshold() == 0)
+		{
+			return false;
+		}
 		if (client.getRealSkillLevel(Skill.PRAYER) > config.getPrayerThreshold())
 		{
 			if (client.getBoostedSkillLevel(Skill.PRAYER) <= config.getPrayerThreshold())

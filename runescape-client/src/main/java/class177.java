@@ -1,71 +1,65 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.HashMap;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fk")
+@ObfuscatedName("fw")
 public class class177 {
-   @ObfuscatedName("t")
-   static int[][] field2285;
-   @ObfuscatedName("d")
-   static int[][] field2286;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = -308985347
-   )
-   static int field2283;
    @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 1971655173
+   @ObfuscatedSignature(
+      signature = "Liv;"
    )
-   static int field2289;
-   @ObfuscatedName("i")
-   static int[] field2290;
-   @ObfuscatedName("u")
-   static int[] field2287;
+   static IndexDataBase field2314;
 
    static {
-      field2285 = new int[128][128];
-      field2286 = new int[128][128];
-      field2290 = new int[4096];
-      field2287 = new int[4096];
+      new HashMap();
    }
 
-   @ObfuscatedName("gq")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "20"
+      signature = "(IS)I",
+      garbageValue = "-6587"
    )
-   static final void method3427() {
-      for(Projectile var0 = (Projectile)Client.projectiles.getFront(); var0 != null; var0 = (Projectile)Client.projectiles.getNext()) {
-         if(var0.floor == BoundingBox3DDrawMode.plane && Client.gameCycle <= var0.endCycle) {
-            if(Client.gameCycle >= var0.startMovementCycle) {
-               if(var0.interacting > 0) {
-                  NPC var1 = Client.cachedNPCs[var0.interacting - 1];
-                  if(var1 != null && var1.x >= 0 && var1.x < 13312 && var1.y >= 0 && var1.y < 13312) {
-                     var0.moveProjectile(var1.x, var1.y, class265.getTileHeight(var1.x, var1.y, var0.floor) - var0.endHeight, Client.gameCycle);
-                  }
+   public static int method3533(int var0) {
+      return UnitPriceComparator.method59(class120.field1688[var0]);
+   }
+
+   @ObfuscatedName("d")
+   @ObfuscatedSignature(
+      signature = "(I)V",
+      garbageValue = "1979749512"
+   )
+   public static void method3530() {
+      try {
+         if(class217.field2486 == 1) {
+            int var0 = class217.field2485.method4228();
+            if(var0 > 0 && class217.field2485.method4354()) {
+               var0 -= class308.field3746;
+               if(var0 < 0) {
+                  var0 = 0;
                }
 
-               if(var0.interacting < 0) {
-                  int var2 = -var0.interacting - 1;
-                  Player var3;
-                  if(var2 == Client.localInteractingIndex) {
-                     var3 = SoundTaskDataProvider.localPlayer;
-                  } else {
-                     var3 = Client.cachedPlayers[var2];
-                  }
-
-                  if(var3 != null && var3.x >= 0 && var3.x < 13312 && var3.y >= 0 && var3.y < 13312) {
-                     var0.moveProjectile(var3.x, var3.y, class265.getTileHeight(var3.x, var3.y, var0.floor) - var0.endHeight, Client.gameCycle);
-                  }
-               }
-
-               var0.update(Client.field930);
-               class255.region.method2863(BoundingBox3DDrawMode.plane, (int)var0.x, (int)var0.y, (int)var0.z, 60, var0, var0.rotationX, -1, false);
+               class217.field2485.method4302(var0);
+               return;
             }
-         } else {
-            var0.unlink();
+
+            class217.field2485.method4236();
+            class217.field2485.method4231();
+            if(class26.field236 != null) {
+               class217.field2486 = 2;
+            } else {
+               class217.field2486 = 0;
+            }
+
+            Ignore.field3644 = null;
+            class59.field557 = null;
          }
+      } catch (Exception var2) {
+         var2.printStackTrace();
+         class217.field2485.method4236();
+         class217.field2486 = 0;
+         Ignore.field3644 = null;
+         class59.field557 = null;
+         class26.field236 = null;
       }
 
    }

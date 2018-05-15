@@ -30,11 +30,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
-import java.util.Map;
 import javax.inject.Inject;
 import net.runelite.api.Client;
 import net.runelite.api.NPC;
-import net.runelite.api.NPCComposition;
 import net.runelite.api.Point;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -60,21 +58,19 @@ public class NpcClickboxOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		Map<NPC, String> npcMap = plugin.getHighlightedNpcs();
-		for (NPC npc : npcMap.keySet())
+		for (NPC npc : plugin.getHighlightedNpcs())
 		{
-			renderNpcOverlay(graphics, npc, npcMap.get(npc), config.getNpcColor());
+			renderNpcOverlay(graphics, npc, npc.getName(), config.getNpcColor());
 		}
 
-		for (NPC npc : plugin.getTaggedNpcs())
+		NPC[] npcs = client.getCachedNPCs();
+		for (int npcId : plugin.getNpcTags())
 		{
-			NPCComposition composition = plugin.getComposition(npc);
-
-			if (composition == null || composition.getName() == null)
-				continue;
-
-			String name = composition.getName().replace('\u00A0', ' ');
-			renderNpcOverlay(graphics, npc, name, config.getTagColor());
+			NPC npc = npcs[npcId];
+			if (npc != null && npc.getName() != null)
+			{
+				renderNpcOverlay(graphics, npc, npc.getName(), config.getTagColor());
+			}
 		}
 
 		return null;

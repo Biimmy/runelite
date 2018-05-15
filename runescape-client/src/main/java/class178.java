@@ -1,68 +1,95 @@
+import java.applet.Applet;
+import java.net.URL;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import netscape.javascript.JSObject;
 
-@ObfuscatedName("fr")
-public abstract class class178 {
-   @ObfuscatedName("o")
+@ObfuscatedName("fx")
+public class class178 {
+   @ObfuscatedName("l")
+   static boolean field2317;
+   @ObfuscatedName("en")
    @ObfuscatedGetter(
-      intValue = 1240880825
+      intValue = 1430708189
    )
-   public int field2296;
-   @ObfuscatedName("k")
-   @ObfuscatedGetter(
-      intValue = -1589540181
-   )
-   public int field2293;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      intValue = -1243119805
-   )
-   public int field2294;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = 880617749
-   )
-   public int field2295;
+   @Export("baseX")
+   static int baseX;
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "(IIILfb;I)Z",
-      garbageValue = "-1864637630"
+      signature = "(Ljava/lang/String;ILjava/lang/String;B)Z",
+      garbageValue = "70"
    )
-   protected abstract boolean vmethod3428(int var1, int var2, int var3, CollisionData var4);
+   static boolean method3534(String var0, int var1, String var2) {
+      if(var1 == 0) {
+         try {
+            if(!class45.field368.startsWith("win")) {
+               throw new Exception();
+            } else if(!var0.startsWith("http://") && !var0.startsWith("https://")) {
+               throw new Exception();
+            } else {
+               String var13 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
 
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "(Liu;IIB)Lcr;",
-      garbageValue = "-77"
-   )
-   static Script method3431(class245 var0, int var1, int var2) {
-      int var3 = (var1 << 8) + var0.field2973;
-      Script var5 = WorldMapType3.method233(var3, var0);
-      if(var5 != null) {
-         return var5;
+               for(int var4 = 0; var4 < var0.length(); ++var4) {
+                  if(var13.indexOf(var0.charAt(var4)) == -1) {
+                     throw new Exception();
+                  }
+               }
+
+               Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
+               return true;
+            }
+         } catch (Throwable var8) {
+            return false;
+         }
+      } else if(var1 == 1) {
+         try {
+            Applet var7 = class45.field374;
+            Object[] var5 = new Object[]{(new URL(class45.field374.getCodeBase(), var0)).toString()};
+            Object var3 = JSObject.getWindow(var7).call(var2, var5);
+            return var3 != null;
+         } catch (Throwable var9) {
+            return false;
+         }
+      } else if(var1 == 2) {
+         try {
+            class45.field374.getAppletContext().showDocument(new URL(class45.field374.getCodeBase(), var0), "_blank");
+            return true;
+         } catch (Exception var10) {
+            return false;
+         }
+      } else if(var1 == 3) {
+         try {
+            class41.method769(class45.field374, "loggedout");
+         } catch (Throwable var12) {
+            ;
+         }
+
+         try {
+            class45.field374.getAppletContext().showDocument(new URL(class45.field374.getCodeBase(), var0), "_top");
+            return true;
+         } catch (Exception var11) {
+            return false;
+         }
       } else {
-         int var6 = var0.field2973 + (var2 + 40000 << 8);
-         var5 = WorldMapType3.method233(var6, var0);
-         return var5 != null?var5:null;
+         throw new IllegalArgumentException();
       }
    }
 
-   @ObfuscatedName("hs")
+   @ObfuscatedName("p")
    @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "-1"
+      signature = "(CII)Ljava/lang/String;",
+      garbageValue = "-759699337"
    )
-   static final void method3432(int var0) {
-      if(var0 >= 0) {
-         int var1 = Client.menuActionParams0[var0];
-         int var2 = Client.menuActionParams1[var0];
-         int var3 = Client.menuTypes[var0];
-         int var4 = Client.menuIdentifiers[var0];
-         String var5 = Client.menuOptions[var0];
-         String var6 = Client.menuTargets[var0];
-         PacketBuffer.menuAction(var1, var2, var3, var4, var5, var6, MouseInput.mouseLastPressedX, MouseInput.mouseLastPressedY);
+   static String method3535(char var0, int var1) {
+      char[] var2 = new char[var1];
+
+      for(int var3 = 0; var3 < var1; ++var3) {
+         var2[var3] = var0;
       }
+
+      return new String(var2);
    }
 }

@@ -76,18 +76,25 @@ public class PlayerIndicatorsOverlay extends Overlay
 			}
 		}
 
+		if (!config.drawOverheadPlayerNames())
+		{
+			return;
+		}
+
 		String name = actor.getName().replace('\u00A0', ' ');
 		int offset = actor.getLogicalHeight() + 40;
 		Point textLocation = actor.getCanvasTextLocation(graphics, name, offset);
 
 		if (textLocation != null)
 		{
-			if (actor.isClanMember())
+			if (config.showClanRanks() && actor.isClanMember())
 			{
 				ClanMemberRank rank = clanManager.getRank(name);
+
 				if (rank != ClanMemberRank.UNRANKED)
 				{
 					BufferedImage clanchatImage = clanManager.getClanImage(rank);
+
 					if (clanchatImage != null)
 					{
 						int width = clanchatImage.getWidth();
@@ -100,6 +107,7 @@ public class PlayerIndicatorsOverlay extends Overlay
 					}
 				}
 			}
+
 			OverlayUtil.renderTextLocation(graphics, textLocation, name, color);
 		}
 	}

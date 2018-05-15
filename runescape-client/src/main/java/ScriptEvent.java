@@ -1,342 +1,261 @@
-import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bi")
+@ObfuscatedName("br")
 @Implements("ScriptEvent")
 public class ScriptEvent extends Node {
-   @ObfuscatedName("o")
-   @Export("objs")
-   Object[] objs;
-   @ObfuscatedName("k")
+   @ObfuscatedName("rl")
+   @ObfuscatedGetter(
+      intValue = -902649341
+   )
+   static int field522;
+   @ObfuscatedName("by")
+   static String field521;
+   @ObfuscatedName("eh")
+   @ObfuscatedSignature(
+      signature = "Lkr;"
+   )
+   @Export("font_p12full")
+   static Font font_p12full;
+   @ObfuscatedName("fi")
+   @ObfuscatedSignature(
+      signature = "Ldt;"
+   )
+   @Export("region")
+   static Region region;
+   @ObfuscatedName("w")
+   @Export("params")
+   Object[] params;
+   @ObfuscatedName("m")
    @Export("boolean1")
    boolean boolean1;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "Lin;"
+      signature = "Lhl;"
    )
-   @Export("widget")
-   Widget widget;
+   @Export("source")
+   Widget source;
+   @ObfuscatedName("b")
+   @ObfuscatedGetter(
+      intValue = -411332337
+   )
+   @Export("mouseX")
+   int mouseX;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = 1874529329
+   )
+   @Export("mouseY")
+   int mouseY;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 1125388097
+   )
+   @Export("op")
+   int op;
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      signature = "Lhl;"
+   )
+   @Export("target")
+   Widget target;
+   @ObfuscatedName("x")
+   @ObfuscatedGetter(
+      intValue = -1655578203
+   )
+   @Export("typedKeyCode")
+   int typedKeyCode;
+   @ObfuscatedName("j")
+   @ObfuscatedGetter(
+      intValue = 866882175
+   )
+   @Export("typedKeyChar")
+   int typedKeyChar;
+   @ObfuscatedName("a")
+   @Export("opbase")
+   String opbase;
+   @ObfuscatedName("l")
+   @ObfuscatedGetter(
+      intValue = 847405195
+   )
+   int field519;
    @ObfuscatedName("d")
    @ObfuscatedGetter(
-      intValue = -1809220201
+      intValue = -652399611
    )
-   int field799;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = 139841485
-   )
-   int field798;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -392236487
-   )
-   int field801;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lin;"
-   )
-   Widget field802;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = -1847441057
-   )
-   @Export("pressedKey")
-   int pressedKey;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 346710565
-   )
-   @Export("typedKey")
-   int typedKey;
-   @ObfuscatedName("x")
-   @Export("string")
-   String string;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -1181708001
-   )
-   int field806;
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "Liu;"
-   )
-   class245 field800;
+   int field518;
 
    public ScriptEvent() {
-      this.field800 = class245.field2972;
+      this.field518 = 76;
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
       signature = "([Ljava/lang/Object;I)V",
-      garbageValue = "921346236"
+      garbageValue = "-1794033575"
    )
-   public void method1137(Object[] var1) {
-      this.objs = var1;
+   public void method1078(Object[] var1) {
+      this.params = var1;
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(Liu;I)V",
-      garbageValue = "-2046392527"
+      signature = "(IS)V",
+      garbageValue = "-26624"
    )
-   public void method1138(class245 var1) {
-      this.field800 = var1;
+   public void method1079(int var1) {
+      this.field518 = var1;
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(Lfd;ZI)V",
-      garbageValue = "-648801898"
+      signature = "(IIB)I",
+      garbageValue = "-124"
    )
-   public static void method1143(class169 var0, boolean var1) {
-      if(class264.NetCache_socket != null) {
-         try {
-            class264.NetCache_socket.vmethod3331();
-         } catch (Exception var6) {
-            ;
-         }
-
-         class264.NetCache_socket = null;
+   public static int method1084(int var0, int var1) {
+      int var2;
+      if(var1 > var0) {
+         var2 = var0;
+         var0 = var1;
+         var1 = var2;
       }
 
-      class264.NetCache_socket = var0;
-      GraphicsObject.sendConInfo(var1);
-      class264.NetCache_responseHeaderBuffer.offset = 0;
-      class49.currentRequest = null;
-      class47.NetCache_responseArchiveBuffer = null;
-      class264.field3426 = 0;
-
-      while(true) {
-         FileRequest var2 = (FileRequest)class264.NetCache_pendingPriorityResponses.first();
-         if(var2 == null) {
-            while(true) {
-               var2 = (FileRequest)class264.NetCache_pendingResponses.first();
-               if(var2 == null) {
-                  if(class264.field3429 != 0) {
-                     try {
-                        Buffer var7 = new Buffer(4);
-                        var7.putByte(4);
-                        var7.putByte(class264.field3429);
-                        var7.putShort(0);
-                        class264.NetCache_socket.vmethod3337(var7.payload, 0, 4);
-                     } catch (IOException var5) {
-                        try {
-                           class264.NetCache_socket.vmethod3331();
-                        } catch (Exception var4) {
-                           ;
-                        }
-
-                        ++class264.field3431;
-                        class264.NetCache_socket = null;
-                     }
-                  }
-
-                  class264.field3416 = 0;
-                  BoundingBox3DDrawMode.field270 = class64.method1118();
-                  return;
-               }
-
-               class264.NetCache_pendingWritesQueue.setHead(var2);
-               class264.NetCache_pendingWrites.put(var2, var2.hash);
-               ++class264.NetCache_pendingWritesCount;
-               --class264.NetCache_pendingResponsesCount;
-            }
-         }
-
-         class264.NetCache_pendingPriorityWrites.put(var2, var2.hash);
-         ++class264.NetCache_pendingPriorityWritesCount;
-         --class264.NetCache_pendingPriorityResponsesCount;
+      while(var1 != 0) {
+         var2 = var0 % var1;
+         var0 = var1;
+         var1 = var2;
       }
+
+      return var0;
    }
 
-   @ObfuscatedName("d")
+   @ObfuscatedName("hj")
    @ObfuscatedSignature(
-      signature = "(Lgs;IB)Z",
-      garbageValue = "10"
+      signature = "(ZLge;I)V",
+      garbageValue = "-435874001"
    )
-   @Export("decodeRegionHash")
-   static boolean decodeRegionHash(PacketBuffer var0, int var1) {
-      int var2 = var0.getBits(2);
+   @Export("xteaChanged")
+   static final void xteaChanged(boolean var0, PacketBuffer var1) {
+      Client.isDynamicRegion = var0;
+      int var2;
       int var3;
-      int var4;
+      int var5;
+      int var6;
       int var7;
       int var8;
-      int var9;
-      int var10;
-      if(var2 == 0) {
-         if(var0.getBits(1) != 0) {
-            decodeRegionHash(var0, var1);
-         }
+      if(!Client.isDynamicRegion) {
+         var2 = var1.readUnsignedShort();
+         var3 = var1.readUnsignedShort();
+         int var4 = var1.readUnsignedShort();
+         GameEngine.xteaKeys = new int[var4][4];
 
-         var3 = var0.getBits(13);
-         var4 = var0.getBits(13);
-         boolean var12 = var0.getBits(1) == 1;
-         if(var12) {
-            class93.field1439[++class93.field1438 - 1] = var1;
-         }
-
-         if(Client.cachedPlayers[var1] != null) {
-            throw new RuntimeException();
-         } else {
-            Player var6 = Client.cachedPlayers[var1] = new Player();
-            var6.playerId = var1;
-            if(class93.field1430[var1] != null) {
-               var6.decodeApperance(class93.field1430[var1]);
-            }
-
-            var6.orientation = class93.Players_orientations[var1];
-            var6.interacting = class93.Players_targetIndices[var1];
-            var7 = class93.Players_regions[var1];
-            var8 = var7 >> 28;
-            var9 = var7 >> 14 & 255;
-            var10 = var7 & 255;
-            var6.pathTraversed[0] = class93.field1429[var1];
-            var6.field856 = (byte)var8;
-            var6.method1196((var9 << 13) + var3 - class138.baseX, (var10 << 13) + var4 - class23.baseY);
-            var6.field860 = false;
-            return true;
-         }
-      } else if(var2 == 1) {
-         var3 = var0.getBits(2);
-         var4 = class93.Players_regions[var1];
-         class93.Players_regions[var1] = (((var4 >> 28) + var3 & 3) << 28) + (var4 & 268435455);
-         return false;
-      } else {
-         int var5;
-         int var11;
-         if(var2 == 2) {
-            var3 = var0.getBits(5);
-            var4 = var3 >> 3;
-            var5 = var3 & 7;
-            var11 = class93.Players_regions[var1];
-            var7 = (var11 >> 28) + var4 & 3;
-            var8 = var11 >> 14 & 255;
-            var9 = var11 & 255;
-            if(var5 == 0) {
-               --var8;
-               --var9;
-            }
-
-            if(var5 == 1) {
-               --var9;
-            }
-
-            if(var5 == 2) {
-               ++var8;
-               --var9;
-            }
-
-            if(var5 == 3) {
-               --var8;
-            }
-
-            if(var5 == 4) {
-               ++var8;
-            }
-
-            if(var5 == 5) {
-               --var8;
-               ++var9;
-            }
-
-            if(var5 == 6) {
-               ++var9;
-            }
-
-            if(var5 == 7) {
-               ++var8;
-               ++var9;
-            }
-
-            class93.Players_regions[var1] = (var8 << 14) + var9 + (var7 << 28);
-            return false;
-         } else {
-            var3 = var0.getBits(18);
-            var4 = var3 >> 16;
-            var5 = var3 >> 8 & 255;
-            var11 = var3 & 255;
-            var7 = class93.Players_regions[var1];
-            var8 = (var7 >> 28) + var4 & 3;
-            var9 = var5 + (var7 >> 14) & 255;
-            var10 = var11 + var7 & 255;
-            class93.Players_regions[var1] = (var9 << 14) + var10 + (var8 << 28);
-            return false;
-         }
-      }
-   }
-
-   @ObfuscatedName("gt")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "-302240473"
-   )
-   static final void method1141(int var0) {
-      int[] var1 = BoundingBox2D.minimapSprite.pixels;
-      int var2 = var1.length;
-
-      int var3;
-      for(var3 = 0; var3 < var2; ++var3) {
-         var1[var3] = 0;
-      }
-
-      int var4;
-      int var5;
-      for(var3 = 1; var3 < 103; ++var3) {
-         var4 = (103 - var3) * 2048 + 24628;
-
-         for(var5 = 1; var5 < 103; ++var5) {
-            if((class62.tileSettings[var0][var5][var3] & 24) == 0) {
-               class255.region.drawTile(var1, var4, 512, var0, var5, var3);
-            }
-
-            if(var0 < 3 && (class62.tileSettings[var0 + 1][var5][var3] & 8) != 0) {
-               class255.region.drawTile(var1, var4, 512, var0 + 1, var5, var3);
-            }
-
-            var4 += 4;
-         }
-      }
-
-      var3 = (238 + (int)(Math.random() * 20.0D) - 10 << 16) + (238 + (int)(Math.random() * 20.0D) - 10 << 8) + (238 + (int)(Math.random() * 20.0D) - 10);
-      var4 = 238 + (int)(Math.random() * 20.0D) - 10 << 16;
-      BoundingBox2D.minimapSprite.setRaster();
-
-      int var6;
-      for(var5 = 1; var5 < 103; ++var5) {
-         for(var6 = 1; var6 < 103; ++var6) {
-            if((class62.tileSettings[var0][var6][var5] & 24) == 0) {
-               MessageNode.drawObject(var0, var6, var5, var3, var4);
-            }
-
-            if(var0 < 3 && (class62.tileSettings[var0 + 1][var6][var5] & 8) != 0) {
-               MessageNode.drawObject(var0 + 1, var6, var5, var3, var4);
+         for(var5 = 0; var5 < var4; ++var5) {
+            for(var6 = 0; var6 < 4; ++var6) {
+               GameEngine.xteaKeys[var5][var6] = var1.readInt();
             }
          }
-      }
 
-      Client.field1093 = 0;
+         OwnWorldComparator.mapRegions = new int[var4];
+         class140.landMapFileIds = new int[var4];
+         ItemContainer.landRegionFileIds = new int[var4];
+         class8.field58 = new byte[var4][];
+         ItemLayer.field1475 = new byte[var4][];
+         boolean var16 = false;
+         if((var2 / 8 == 48 || var2 / 8 == 49) && var3 / 8 == 48) {
+            var16 = true;
+         }
 
-      for(var5 = 0; var5 < 104; ++var5) {
-         for(var6 = 0; var6 < 104; ++var6) {
-            int var7 = class255.region.getGroundObjectHash(BoundingBox3DDrawMode.plane, var5, var6);
-            if(var7 != 0) {
-               var7 = var7 >> 14 & 32767;
-               int var8 = GameCanvas.getObjectDefinition(var7).mapIconId;
-               if(var8 >= 0) {
-                  Client.mapIcons[Client.field1093] = Area.mapAreaType[var8].getMapIcon(false);
-                  Client.field1094[Client.field1093] = var5;
-                  Client.field1095[Client.field1093] = var6;
-                  ++Client.field1093;
+         if(var2 / 8 == 48 && var3 / 8 == 148) {
+            var16 = true;
+         }
+
+         var4 = 0;
+
+         for(var6 = (var2 - 6) / 8; var6 <= (var2 + 6) / 8; ++var6) {
+            for(var7 = (var3 - 6) / 8; var7 <= (var3 + 6) / 8; ++var7) {
+               var8 = var7 + (var6 << 8);
+               if(!var16 || var7 != 49 && var7 != 149 && var7 != 147 && var6 != 50 && (var6 != 49 || var7 != 47)) {
+                  OwnWorldComparator.mapRegions[var4] = var8;
+                  class140.landMapFileIds[var4] = class234.indexMaps.getFile("m" + var6 + "_" + var7);
+                  ItemContainer.landRegionFileIds[var4] = class234.indexMaps.getFile("l" + var6 + "_" + var7);
+                  ++var4;
                }
             }
          }
+
+         ClanMemberManager.method5501(var2, var3, true);
+      } else {
+         var2 = var1.method3562();
+         var3 = var1.method3676();
+         boolean var15 = var1.method3553() == 1;
+         var5 = var1.readUnsignedShort();
+         var1.bitAccess();
+
+         int var9;
+         for(var6 = 0; var6 < 4; ++var6) {
+            for(var7 = 0; var7 < 13; ++var7) {
+               for(var8 = 0; var8 < 13; ++var8) {
+                  var9 = var1.getBits(1);
+                  if(var9 == 1) {
+                     Client.instanceTemplateChunks[var6][var7][var8] = var1.getBits(26);
+                  } else {
+                     Client.instanceTemplateChunks[var6][var7][var8] = -1;
+                  }
+               }
+            }
+         }
+
+         var1.byteAccess();
+         GameEngine.xteaKeys = new int[var5][4];
+
+         for(var6 = 0; var6 < var5; ++var6) {
+            for(var7 = 0; var7 < 4; ++var7) {
+               GameEngine.xteaKeys[var6][var7] = var1.readInt();
+            }
+         }
+
+         OwnWorldComparator.mapRegions = new int[var5];
+         class140.landMapFileIds = new int[var5];
+         ItemContainer.landRegionFileIds = new int[var5];
+         class8.field58 = new byte[var5][];
+         ItemLayer.field1475 = new byte[var5][];
+         var5 = 0;
+
+         for(var6 = 0; var6 < 4; ++var6) {
+            for(var7 = 0; var7 < 13; ++var7) {
+               for(var8 = 0; var8 < 13; ++var8) {
+                  var9 = Client.instanceTemplateChunks[var6][var7][var8];
+                  if(var9 != -1) {
+                     int var10 = var9 >> 14 & 1023;
+                     int var11 = var9 >> 3 & 2047;
+                     int var12 = (var10 / 8 << 8) + var11 / 8;
+
+                     int var13;
+                     for(var13 = 0; var13 < var5; ++var13) {
+                        if(OwnWorldComparator.mapRegions[var13] == var12) {
+                           var12 = -1;
+                           break;
+                        }
+                     }
+
+                     if(var12 != -1) {
+                        OwnWorldComparator.mapRegions[var5] = var12;
+                        var13 = var12 >> 8 & 255;
+                        int var14 = var12 & 255;
+                        class140.landMapFileIds[var5] = class234.indexMaps.getFile("m" + var13 + "_" + var14);
+                        ItemContainer.landRegionFileIds[var5] = class234.indexMaps.getFile("l" + var13 + "_" + var14);
+                        ++var5;
+                     }
+                  }
+               }
+            }
+         }
+
+         ClanMemberManager.method5501(var2, var3, !var15);
       }
 
-      MapCacheArchiveNames.rasterProvider.setRaster();
    }
 }

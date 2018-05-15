@@ -4,74 +4,74 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bb")
+@ObfuscatedName("bl")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 95714405
+      intValue = 226227957
    )
    @Export("level")
    int level;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 1724493673
+      intValue = 505925079
    )
    @Export("type")
    int type;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = 1709586751
+      intValue = 1543670839
    )
    @Export("x")
    int x;
-   @ObfuscatedName("d")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = 1761598365
+      intValue = 1791100097
    )
    @Export("y")
    int y;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = 668811263
+   )
+   int field870;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 158853083
+   )
+   int field871;
    @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = 358825331
+      intValue = 1182445815
    )
-   int field1146;
-   @ObfuscatedName("m")
+   int field872;
+   @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = -1381981335
-   )
-   int field1144;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 2020228435
-   )
-   int field1147;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 1399791223
+      intValue = -1023279323
    )
    @Export("id")
    int id;
-   @ObfuscatedName("u")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = -734959189
+      intValue = -1500162581
    )
    @Export("orientation")
    int orientation;
-   @ObfuscatedName("x")
+   @ObfuscatedName("a")
    @ObfuscatedGetter(
-      intValue = -1997658261
+      intValue = -895946247
    )
-   int field1151;
-   @ObfuscatedName("y")
+   int field875;
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      intValue = -1527742399
+      intValue = -1278571041
    )
    @Export("delay")
    int delay;
-   @ObfuscatedName("a")
+   @ObfuscatedName("d")
    @ObfuscatedGetter(
-      intValue = -1268965623
+      intValue = -1231655143
    )
    @Export("hitpoints")
    int hitpoints;
@@ -81,13 +81,17 @@ public final class PendingSpawn extends Node {
       this.hitpoints = -1;
    }
 
-   @ObfuscatedName("ho")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "(IIB)Ljava/lang/String;",
-      garbageValue = "44"
+      signature = "(IB)V",
+      garbageValue = "122"
    )
-   static final String method1653(int var0, int var1) {
-      int var2 = var1 - var0;
-      return var2 < -9?class45.getColTags(16711680):(var2 < -6?class45.getColTags(16723968):(var2 < -3?class45.getColTags(16740352):(var2 < 0?class45.getColTags(16756736):(var2 > 9?class45.getColTags(65280):(var2 > 6?class45.getColTags(4259584):(var2 > 3?class45.getColTags(8453888):(var2 > 0?class45.getColTags(12648192):class45.getColTags(16776960))))))));
+   public static void method1578(int var0) {
+      if(class217.field2486 != 0) {
+         class21.field185 = var0;
+      } else {
+         class217.field2485.method4302(var0);
+      }
+
    }
 }

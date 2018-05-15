@@ -3,86 +3,134 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bm")
+@ObfuscatedName("am")
 @Implements("SoundTaskDataProvider")
-public class SoundTaskDataProvider implements class101 {
-   @ObfuscatedName("ip")
-   @ObfuscatedSignature(
-      signature = "Lbz;"
-   )
-   @Export("localPlayer")
-   static Player localPlayer;
+public class SoundTaskDataProvider implements class89 {
+   @ObfuscatedName("bl")
+   @Export("sessionToken")
+   static String sessionToken;
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(I)Ldf;",
-      garbageValue = "978575065"
+      signature = "(I)Lcc;",
+      garbageValue = "2009259142"
    )
-   public AbstractSoundSystem vmethod2099() {
+   public AbstractSoundSystem vmethod2093() {
       return new SourceDataSoundSystem();
-   }
-
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(Ljf;IIB)Lld;",
-      garbageValue = "127"
-   )
-   public static SpritePixels method817(IndexDataBase var0, int var1, int var2) {
-      if(!RunException.method3215(var0, var1, var2)) {
-         return null;
-      } else {
-         SpritePixels var4 = new SpritePixels();
-         var4.maxWidth = class332.indexedSpriteWidth;
-         var4.maxHeight = class332.indexedSpriteHeight;
-         var4.offsetX = class332.indexedSpriteOffsetXs[0];
-         var4.offsetY = FileSystem.indexedSpriteOffsetYs[0];
-         var4.width = WorldMapDecoration.indexSpriteWidths[0];
-         var4.height = class332.indexedSpriteHeights[0];
-         int var5 = var4.width * var4.height;
-         byte[] var6 = class332.spritePixels[0];
-         var4.pixels = new int[var5];
-
-         for(int var7 = 0; var7 < var5; ++var7) {
-            var4.pixels[var7] = class332.indexedSpritePalette[var6[var7] & 255];
-         }
-
-         class36.method541();
-         return var4;
-      }
-   }
-
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "([BS)Ljava/lang/String;",
-      garbageValue = "10570"
-   )
-   public static String method816(byte[] var0) {
-      return class66.method1132(var0, 0, var0.length);
    }
 
    @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(ZB)V",
-      garbageValue = "-93"
+      signature = "(II)Ljp;",
+      garbageValue = "1348616283"
    )
-   static void method814(boolean var0) {
-      class90.loginMessage1 = "";
-      class90.loginMessage2 = "Enter your username/email & password.";
-      class90.loginMessage3 = "";
-      class90.loginIndex = 2;
-      if(var0) {
-         class90.password = "";
-      }
+   @Export("getObjectDefinition")
+   public static ObjectComposition getObjectDefinition(int var0) {
+      ObjectComposition var1 = (ObjectComposition)ObjectComposition.objects.get((long)var0);
+      if(var1 != null) {
+         return var1;
+      } else {
+         byte[] var2 = ObjectComposition.objects_ref.getConfigData(6, var0);
+         var1 = new ObjectComposition();
+         var1.id = var0;
+         if(var2 != null) {
+            var1.decode(new Buffer(var2));
+         }
 
-      if(class90.username == null || class90.username.length() <= 0) {
-         if(Client.preferences.rememberedUsername != null) {
-            class90.username = Client.preferences.rememberedUsername;
-            class90.Login_isUsernameRemembered = true;
-         } else {
-            class90.Login_isUsernameRemembered = false;
+         var1.post();
+         if(var1.isHollow) {
+            var1.clipType = 0;
+            var1.blocksProjectile = false;
+         }
+
+         ObjectComposition.objects.put(var1, (long)var0);
+         return var1;
+      }
+   }
+
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      signature = "(Lgy;IIIIIII)V",
+      garbageValue = "1114930208"
+   )
+   @Export("loadTerrain")
+   static final void loadTerrain(Buffer var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+      int var7;
+      if(var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+         class50.tileSettings[var1][var2][var3] = 0;
+
+         while(true) {
+            var7 = var0.readUnsignedByte();
+            if(var7 == 0) {
+               if(var1 == 0) {
+                  class50.tileHeights[0][var2][var3] = -class83.method1985(932731 + var2 + var4, var3 + 556238 + var5) * 8;
+               } else {
+                  class50.tileHeights[var1][var2][var3] = class50.tileHeights[var1 - 1][var2][var3] - 240;
+               }
+               break;
+            }
+
+            if(var7 == 1) {
+               int var8 = var0.readUnsignedByte();
+               if(var8 == 1) {
+                  var8 = 0;
+               }
+
+               if(var1 == 0) {
+                  class50.tileHeights[0][var2][var3] = -var8 * 8;
+               } else {
+                  class50.tileHeights[var1][var2][var3] = class50.tileHeights[var1 - 1][var2][var3] - var8 * 8;
+               }
+               break;
+            }
+
+            if(var7 <= 49) {
+               class139.tileOverlayIds[var1][var2][var3] = var0.readByte();
+               NPC.tileOverlayPath[var1][var2][var3] = (byte)((var7 - 2) / 4);
+               class50.overlayRotations[var1][var2][var3] = (byte)(var7 - 2 + var6 & 3);
+            } else if(var7 <= 81) {
+               class50.tileSettings[var1][var2][var3] = (byte)(var7 - 49);
+            } else {
+               class50.tileUnderlayIds[var1][var2][var3] = (byte)(var7 - 81);
+            }
+         }
+      } else {
+         while(true) {
+            var7 = var0.readUnsignedByte();
+            if(var7 == 0) {
+               break;
+            }
+
+            if(var7 == 1) {
+               var0.readUnsignedByte();
+               break;
+            }
+
+            if(var7 <= 49) {
+               var0.readUnsignedByte();
+            }
          }
       }
 
-      class196.method3744();
+   }
+
+   @ObfuscatedName("c")
+   @ObfuscatedSignature(
+      signature = "([BI)Lkr;",
+      garbageValue = "-248306191"
+   )
+   public static Font method767(byte[] var0) {
+      if(var0 == null) {
+         return null;
+      } else {
+         Font var1 = new Font(var0, class319.indexedSpriteOffsetXs, class319.indexedSpriteOffsetYs, class192.indexSpriteWidths, class319.indexedSpriteHeights, class319.indexedSpritePalette, class294.spritePixels);
+         class319.indexedSpriteOffsetXs = null;
+         class319.indexedSpriteOffsetYs = null;
+         class192.indexSpriteWidths = null;
+         class319.indexedSpriteHeights = null;
+         class319.indexedSpritePalette = null;
+         class294.spritePixels = null;
+         return var1;
+      }
    }
 }

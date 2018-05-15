@@ -25,12 +25,15 @@
 package net.runelite.mixins;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import javax.annotation.Nullable;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.ClanMember;
+import net.runelite.api.Friend;
 import net.runelite.api.GameState;
 import net.runelite.api.GrandExchangeOffer;
+import net.runelite.api.GraphicsObject;
 import net.runelite.api.HintArrowType;
 import net.runelite.api.IndexedSprite;
 import net.runelite.api.InventoryID;
@@ -51,11 +54,13 @@ import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Prayer;
 import net.runelite.api.Projectile;
-import net.runelite.api.Setting;
 import net.runelite.api.Skill;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.Tile;
+import net.runelite.api.VarPlayer;
 import net.runelite.api.Varbits;
 import net.runelite.api.WidgetNode;
+import net.runelite.api.WorldType;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.BoostedLevelChanged;
@@ -65,13 +70,14 @@ import net.runelite.api.events.ExperienceChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GrandExchangeOfferChanged;
 import net.runelite.api.events.MapRegionChanged;
+import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerMenuOptionsChanged;
 import net.runelite.api.events.PlayerSpawned;
 import net.runelite.api.events.ResizeableChanged;
-import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.events.UsernameChanged;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -79,6 +85,7 @@ import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
+import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.callback.Hooks;
@@ -87,11 +94,14 @@ import static net.runelite.client.callback.Hooks.eventBus;
 import net.runelite.rs.api.RSClanMemberManager;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSDeque;
+import net.runelite.rs.api.RSFriendContainer;
+import net.runelite.rs.api.RSFriendManager;
 import net.runelite.rs.api.RSHashTable;
 import net.runelite.rs.api.RSIndexedSprite;
 import net.runelite.rs.api.RSItemContainer;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSName;
+import net.runelite.rs.api.RSNameable;
 import net.runelite.rs.api.RSPlayer;
 import net.runelite.rs.api.RSWidget;
 
@@ -100,6 +110,9 @@ public abstract class RSClientMixin implements RSClient
 {
 	@Shadow("clientInstance")
 	private static RSClient client;
+
+	@Inject
+	private static int tickCount;
 
 	@Inject
 	private static boolean interpolatePlayerAnimations;
@@ -115,6 +128,18 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	private static RSNPC[] oldNpcs = new RSNPC[32768];
+
+	@Inject
+	private static int itemPressedDurationBuffer;
+
+	@Inject
+	private static int inventoryDragDelay;
+
+	@Inject
+	private static boolean hasVarbitChanged;
+
+	@Inject
+	private static int oldMenuEntryCount;
 
 	@Inject
 	@Override
@@ -156,6 +181,47 @@ public abstract class RSClientMixin implements RSClient
 	public void setInterpolateObjectAnimations(boolean interpolate)
 	{
 		interpolateObjectAnimations = interpolate;
+	}
+
+	@Inject
+	@Override
+	public void setInventoryDragDelay(int delay)
+	{
+		inventoryDragDelay = delay;
+	}
+
+	@Inject
+	@Override
+	public AccountType getAccountType()
+	{
+		int varbit = getVar(Varbits.ACCOUNT_TYPE);
+
+		switch (varbit)
+		{
+			case 1:
+				return AccountType.IRONMAN;
+			case 2:
+				return AccountType.ULTIMATE_IRONMAN;
+			case 3:
+				return AccountType.HARDCORE_IRONMAN;
+		}
+
+		return AccountType.NORMAL;
+	}
+
+	@Inject
+	@Override
+	public Tile getSelectedRegionTile()
+	{
+		int tileX = getSelectedRegionTileX();
+		int tileY = getSelectedRegionTileY();
+
+		if (tileX == -1 || tileY == -1)
+		{
+			return null;
+		}
+
+		return getRegion().getTiles()[getPlane()][tileX][tileY];
 	}
 
 	@Inject
@@ -299,17 +365,17 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public int getSetting(Setting setting)
+	public int getVar(VarPlayer varPlayer)
 	{
 		int[] varps = getVarps();
-		return varps[setting.getId()];
+		return varps[varPlayer.getId()];
 	}
 
 	@Inject
 	@Override
 	public boolean isPrayerActive(Prayer prayer)
 	{
-		return getSetting(prayer.getVarbit()) == 1;
+		return getVar(prayer.getVarbit()) == 1;
 	}
 
 	/**
@@ -363,7 +429,7 @@ public abstract class RSClientMixin implements RSClient
 	{
 		if (isResized())
 		{
-			if (getSetting(Varbits.SIDE_PANELS) == 1)
+			if (getVar(Varbits.SIDE_PANELS) == 1)
 			{
 				return getWidget(WidgetInfo.RESIZABLE_VIEWPORT_BOTTOM_LINE);
 			}
@@ -425,6 +491,31 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		setMenuOptionCount(count);
+		oldMenuEntryCount = count;
+	}
+
+	@FieldHook("menuOptionCount")
+	@Inject
+	public static void onMenuOptionsChanged(int idx)
+	{
+		int oldCount = oldMenuEntryCount;
+		int newCount = client.getMenuOptionCount();
+
+		oldMenuEntryCount = newCount;
+
+		if (newCount == oldCount + 1)
+		{
+			MenuEntryAdded event = new MenuEntryAdded(
+				client.getMenuOptions()[newCount - 1],
+				client.getMenuTargets()[newCount - 1],
+				client.getMenuTypes()[newCount - 1],
+				client.getMenuIdentifiers()[newCount - 1],
+				client.getMenuActionParams0()[newCount - 1],
+				client.getMenuActionParams1()[newCount - 1]
+			);
+
+			eventBus.post(event);
+		}
 	}
 
 	@Inject
@@ -441,6 +532,22 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		return projectiles;
+	}
+
+	@Inject
+	@Override
+	public List<GraphicsObject> getGraphicsObjects()
+	{
+		List<GraphicsObject> graphicsObjects = new ArrayList<GraphicsObject>();
+		RSDeque graphicsObjectDeque = this.getGraphicsObjectDeque();
+		Node head = graphicsObjectDeque.getHead();
+
+		for (Node node = head.getNext(); node != head; node = node.getNext())
+		{
+			graphicsObjects.add((GraphicsObject)node);
+		}
+
+		return graphicsObjects;
 	}
 
 	@Inject
@@ -462,27 +569,6 @@ public abstract class RSClientMixin implements RSClient
 			return LocalPoint.fromRegion(regionX, regionY);
 		}
 		return null;
-	}
-
-	@Inject
-	@Override
-	public boolean getBoundingBoxAlwaysOnMode()
-	{
-		return getboundingBox3DDrawMode() == getALWAYSDrawMode();
-	}
-
-	@Inject
-	@Override
-	public void setBoundingBoxAlwaysOnMode(boolean alwaysDrawBoxes)
-	{
-		if (alwaysDrawBoxes)
-		{
-			setboundingBox3DDrawMode(getALWAYSDrawMode());
-		}
-		else
-		{
-			setboundingBox3DDrawMode(getON_MOUSEOVERDrawMode());
-		}
 	}
 
 	@Inject
@@ -525,6 +611,26 @@ public abstract class RSClientMixin implements RSClient
 	{
 		final RSClanMemberManager clanMemberManager = getClanMemberManager();
 		return clanMemberManager != null ? (ClanMember[]) getClanMemberManager().getNameables() : null;
+	}
+
+	@Inject
+	@Override
+	public Friend[] getFriends()
+	{
+		final RSFriendManager friendManager = getFriendManager();
+		if (friendManager == null)
+		{
+			return null;
+		}
+
+		final RSFriendContainer friendContainer = friendManager.getFriendContainer();
+		if (friendContainer == null)
+		{
+			return null;
+		}
+
+		RSNameable[] nameables = friendContainer.getNameables();
+		return (Friend[]) nameables;
 	}
 
 	@Inject
@@ -594,6 +700,28 @@ public abstract class RSClientMixin implements RSClient
 			WidgetLoaded event = new WidgetLoaded();
 			event.setGroupId(groupId);
 			eventBus.post(event);
+		}
+	}
+
+	@FieldHook("itemPressedDuration")
+	@Inject
+	public static void itemPressedDurationChanged(int idx)
+	{
+		if (client.getItemPressedDuration() > 0)
+		{
+			itemPressedDurationBuffer++;
+			if (itemPressedDurationBuffer >= inventoryDragDelay)
+			{
+				client.setItemPressedDuration(itemPressedDurationBuffer);
+			}
+			else
+			{
+				client.setItemPressedDuration(0);
+			}
+		}
+		else
+		{
+			itemPressedDurationBuffer = 0;
 		}
 	}
 
@@ -744,8 +872,16 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public static void settingsChanged(int idx)
 	{
-		VarbitChanged varbitChanged = new VarbitChanged();
-		eventBus.post(varbitChanged);
+		hasVarbitChanged = true;
+	}
+
+	@Inject
+	@Override
+	public boolean shouldPostVarbitEvent()
+	{
+		boolean ret = hasVarbitChanged;
+		hasVarbitChanged = false;
+		return ret;
 	}
 
 	@FieldHook("isResized")
@@ -821,5 +957,34 @@ public abstract class RSClientMixin implements RSClient
 			return;
 		}
 		rs$menuAction(var0, var1, var2, var3, var4, var5, var6, var7);
+	}
+
+	@FieldHook("username")
+	@Inject
+	public static void onUsernameChanged(int idx)
+	{
+		eventBus.post(new UsernameChanged());
+	}
+
+	@Override
+	@Inject
+	public int getTickCount()
+	{
+		return tickCount;
+	}
+
+	@Override
+	@Inject
+	public void setTickCount(int tick)
+	{
+		tickCount = tick;
+	}
+
+	@Inject
+	@Override
+	public EnumSet<WorldType> getWorldType()
+	{
+		int flags = getFlags();
+		return WorldType.fromMask(flags);
 	}
 }

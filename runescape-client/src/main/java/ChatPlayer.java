@@ -4,23 +4,23 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kv")
+@ObfuscatedName("kd")
 @Implements("ChatPlayer")
 public class ChatPlayer extends Nameable {
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = 210795971
+      intValue = -1818299933
    )
    @Export("world")
    public int world;
-   @ObfuscatedName("m")
+   @ObfuscatedName("n")
    @ObfuscatedGetter(
-      intValue = 488130351
+      intValue = -467035593
    )
-   public int field3845;
-   @ObfuscatedName("z")
+   public int field3649;
+   @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = 958560583
+      intValue = -1378703733
    )
    @Export("rank")
    public int rank;
@@ -29,60 +29,31 @@ public class ChatPlayer extends Nameable {
       this.world = -1;
    }
 
-   @ObfuscatedName("ar")
+   @ObfuscatedName("ax")
    @ObfuscatedSignature(
       signature = "(III)V",
-      garbageValue = "382794867"
+      garbageValue = "698375569"
    )
-   void method5389(int var1, int var2) {
+   void method5432(int var1, int var2) {
       this.world = var1;
-      this.field3845 = var2;
+      this.field3649 = var2;
    }
 
-   @ObfuscatedName("an")
+   @ObfuscatedName("al")
    @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-1259198744"
+      signature = "(B)I",
+      garbageValue = "-21"
    )
-   public int method5390() {
+   public int method5433() {
       return this.world;
    }
 
-   @ObfuscatedName("ae")
+   @ObfuscatedName("ak")
    @ObfuscatedSignature(
       signature = "(B)Z",
-      garbageValue = "-1"
+      garbageValue = "5"
    )
-   public boolean method5391() {
+   public boolean method5438() {
       return this.world > 0;
-   }
-
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      signature = "([BIII)Ljava/lang/String;",
-      garbageValue = "-985075976"
-   )
-   @Export("getString")
-   public static String getString(byte[] var0, int var1, int var2) {
-      char[] var3 = new char[var2];
-      int var4 = 0;
-
-      for(int var5 = 0; var5 < var2; ++var5) {
-         int var6 = var0[var5 + var1] & 255;
-         if(var6 != 0) {
-            if(var6 >= 128 && var6 < 160) {
-               char var7 = class314.cp1252AsciiExtension[var6 - 128];
-               if(var7 == 0) {
-                  var7 = '?';
-               }
-
-               var6 = var7;
-            }
-
-            var3[var4++] = (char)var6;
-         }
-      }
-
-      return new String(var3, 0, var4);
    }
 }

@@ -3,37 +3,34 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("bd")
 @Implements("ContextMenuRow")
 public class ContextMenuRow {
-   @ObfuscatedName("g")
-   @Export("osName")
-   static String osName;
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 1287342727
+      intValue = -1162128335
    )
    @Export("param0")
    int param0;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 1328833299
+      intValue = 207385747
    )
    @Export("param1")
    int param1;
-   @ObfuscatedName("t")
-   @Export("option")
-   String option;
-   @ObfuscatedName("d")
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = 344581557
+      intValue = -449064731
    )
    @Export("type")
    int type;
-   @ObfuscatedName("h")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = 1806237659
+      intValue = -216561769
    )
    @Export("identifier")
    int identifier;
+   @ObfuscatedName("f")
+   @Export("option")
+   String option;
 }

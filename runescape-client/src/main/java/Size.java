@@ -4,98 +4,148 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("e")
+@ObfuscatedName("s")
 @Implements("Size")
 public class Size {
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "Le;"
+      signature = "Ls;"
    )
-   public static final Size field371;
-   @ObfuscatedName("k")
+   public static final Size field93;
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "Le;"
+      signature = "Ls;"
    )
-   public static final Size field363;
-   @ObfuscatedName("t")
+   public static final Size field87;
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "Le;"
+      signature = "Ls;"
    )
-   public static final Size field368;
+   public static final Size field89;
    @ObfuscatedName("l")
+   @Export("floorSaturations")
+   static int[] floorSaturations;
+   @ObfuscatedName("ca")
    @ObfuscatedSignature(
-      signature = "[Ldy;"
+      signature = "Led;"
    )
-   @Export("idxFiles")
-   public static CacheFile[] idxFiles;
-   @ObfuscatedName("bx")
+   @Export("socket")
+   static Task socket;
+   @ObfuscatedName("dv")
    @ObfuscatedGetter(
-      intValue = 1752042203
+      intValue = -23097341
    )
-   static int field369;
-   @ObfuscatedName("ct")
-   @ObfuscatedSignature(
-      signature = "Ljn;"
+   @Export("myWorldPort")
+   static int myWorldPort;
+   @ObfuscatedName("gk")
+   @ObfuscatedGetter(
+      intValue = -1690305633
    )
-   @Export("configsIndex")
-   static IndexData configsIndex;
-   @ObfuscatedName("ea")
-   @ObfuscatedSignature(
-      signature = "Lfo;"
+   @Export("cameraZ")
+   static int cameraZ;
+   @ObfuscatedName("b")
+   final String field90;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = -46781563
    )
-   static Task field364;
-   @ObfuscatedName("d")
-   final String field365;
+   final int field88;
+   @ObfuscatedName("n")
+   @ObfuscatedGetter(
+      intValue = 355855233
+   )
+   final int field92;
    @ObfuscatedName("h")
    @ObfuscatedGetter(
-      intValue = -163371543
+      intValue = -1178525389
    )
-   final int field362;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -1921369821
-   )
-   final int field367;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 1135391441
-   )
-   final int field372;
+   final int field98;
 
    static {
-      field371 = new Size("SMALL", 1, 0, 4);
-      field363 = new Size("MEDIUM", 0, 1, 2);
-      field368 = new Size("LARGE", 2, 2, 0);
+      field93 = new Size("SMALL", 1, 0, 4);
+      field87 = new Size("MEDIUM", 2, 1, 2);
+      field89 = new Size("LARGE", 0, 2, 0);
    }
 
    Size(String var1, int var2, int var3, int var4) {
-      this.field365 = var1;
-      this.field362 = var2;
-      this.field367 = var3;
-      this.field372 = var4;
+      this.field90 = var1;
+      this.field88 = var2;
+      this.field92 = var3;
+      this.field98 = var4;
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(FB)Z",
-      garbageValue = "5"
+      signature = "(FI)Z",
+      garbageValue = "843081340"
    )
-   boolean method192(float var1) {
-      return var1 >= (float)this.field372;
+   boolean method121(float var1) {
+      return var1 >= (float)this.field98;
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(II)Le;",
-      garbageValue = "-1822528271"
+      signature = "(IIB)I",
+      garbageValue = "85"
    )
-   static Size method195(int var0) {
-      Size[] var1 = new Size[]{field368, field371, field363};
+   static int method122(int var0, int var1) {
+      Overlay var2 = class148.getOverlayDefinition(var0);
+      if(var2 == null) {
+         return var1;
+      } else if(var2.otherRgbColor >= 0) {
+         return var2.otherRgbColor | -16777216;
+      } else if(var2.texture >= 0) {
+         int var3 = class7.method87(Graphics3D.textureLoader.getAverageTextureRGB(var2.texture), 96);
+         return Graphics3D.colorPalette[var3] | -16777216;
+      } else if(var2.color == 16711935) {
+         return var1;
+      } else {
+         int var4 = var2.hue;
+         int var5 = var2.saturation;
+         int var6 = var2.lightness;
+         if(var6 > 179) {
+            var5 /= 2;
+         }
+
+         if(var6 > 192) {
+            var5 /= 2;
+         }
+
+         if(var6 > 217) {
+            var5 /= 2;
+         }
+
+         if(var6 > 243) {
+            var5 /= 2;
+         }
+
+         int var7 = (var5 / 32 << 7) + var6 / 2 + (var4 / 4 << 10);
+         int var8 = class7.method87(var7, 96);
+         return Graphics3D.colorPalette[var8] | -16777216;
+      }
+   }
+
+   @ObfuscatedName("w")
+   @ObfuscatedSignature(
+      signature = "(Liv;B)V",
+      garbageValue = "-116"
+   )
+   public static void method124(IndexDataBase var0) {
+      class311.EnumDefinition_indexCache = var0;
+   }
+
+   @ObfuscatedName("m")
+   @ObfuscatedSignature(
+      signature = "(II)Ls;",
+      garbageValue = "-1696635948"
+   )
+   static Size method117(int var0) {
+      Size[] var1 = new Size[]{field87, field89, field93};
       Size[] var2 = var1;
 
       for(int var3 = 0; var3 < var2.length; ++var3) {
          Size var4 = var2[var3];
-         if(var0 == var4.field367) {
+         if(var0 == var4.field92) {
             return var4;
          }
       }
@@ -103,29 +153,13 @@ public class Size {
       return null;
    }
 
-   @ObfuscatedName("a")
+   @ObfuscatedName("p")
    @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-121"
+      signature = "(Ljava/lang/String;I)I",
+      garbageValue = "1717836676"
    )
-   static final void method199() {
-      Object var10000 = null;
-      String var0 = "Your ignore list is full. Max of 100 for free users, and 400 for members";
-      class57.sendGameMessage(30, "", var0);
-   }
-
-   @ObfuscatedName("hi")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-537016480"
-   )
-   static void method198() {
-      Client.menuOptionCount = 0;
-      Client.isMenuOpen = false;
-      Client.menuOptions[0] = "Cancel";
-      Client.menuTargets[0] = "";
-      Client.menuTypes[0] = 1006;
-      Client.menuBooleanArray[0] = false;
-      Client.menuOptionCount = 1;
+   @Export("getLength")
+   public static int getLength(String var0) {
+      return var0.length() + 1;
    }
 }

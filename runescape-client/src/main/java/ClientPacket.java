@@ -1,614 +1,615 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fl")
+@ObfuscatedName("fy")
 @Implements("ClientPacket")
-public class ClientPacket implements class179 {
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2400;
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2384;
-   @ObfuscatedName("t")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2459;
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2386;
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2387;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2433;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2416;
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2390;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2391;
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2392;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2393;
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2453;
+public class ClientPacket implements class167 {
    @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2395;
-   @ObfuscatedName("n")
+   public static final ClientPacket field2257;
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2396;
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2478;
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2456;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2399;
+   public static final ClientPacket field2203;
    @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2468;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2422;
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2402;
+   public static final ClientPacket field2160;
    @ObfuscatedName("b")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2403;
-   @ObfuscatedName("g")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2472;
+   public static final ClientPacket field2161;
    @ObfuscatedName("f")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2405;
+   public static final ClientPacket field2162;
+   @ObfuscatedName("n")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2163;
+   @ObfuscatedName("h")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2164;
+   @ObfuscatedName("x")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2165;
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2206;
+   @ObfuscatedName("a")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2169;
+   @ObfuscatedName("l")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2182;
+   @ObfuscatedName("d")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2213;
+   @ObfuscatedName("s")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2238;
    @ObfuscatedName("p")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2441;
-   @ObfuscatedName("e")
+   public static final ClientPacket field2171;
+   @ObfuscatedName("g")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2482;
+   public static final ClientPacket field2172;
+   @ObfuscatedName("y")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2216;
    @ObfuscatedName("c")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2408;
-   @ObfuscatedName("ab")
+   public static final ClientPacket field2174;
+   @ObfuscatedName("e")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2413;
-   @ObfuscatedName("ap")
+   public static final ClientPacket field2175;
+   @ObfuscatedName("t")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2464;
-   @ObfuscatedName("ag")
+   public static final ClientPacket field2226;
+   @ObfuscatedName("u")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2411;
-   @ObfuscatedName("at")
+   public static final ClientPacket field2177;
+   @ObfuscatedName("i")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2412;
-   @ObfuscatedName("ac")
+   public static final ClientPacket field2178;
+   @ObfuscatedName("z")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2419;
-   @ObfuscatedName("al")
+   public static final ClientPacket field2211;
+   @ObfuscatedName("k")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2414;
-   @ObfuscatedName("ah")
+   public static final ClientPacket field2180;
+   @ObfuscatedName("r")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2415;
-   @ObfuscatedName("af")
+   public static final ClientPacket field2181;
+   @ObfuscatedName("v")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2430;
-   @ObfuscatedName("aq")
+   public static final ClientPacket field2218;
+   @ObfuscatedName("o")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2406;
+   public static final ClientPacket field2183;
    @ObfuscatedName("ai")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2418;
-   @ObfuscatedName("az")
+   public static final ClientPacket field2225;
+   @ObfuscatedName("at")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2461;
-   @ObfuscatedName("aa")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2420;
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2421;
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2398;
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2423;
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2445;
+   public static final ClientPacket field2173;
    @ObfuscatedName("ad")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2425;
-   @ObfuscatedName("au")
+   public static final ClientPacket field2249;
+   @ObfuscatedName("ac")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2426;
-   @ObfuscatedName("ar")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2427;
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2388;
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2417;
-   @ObfuscatedName("aw")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2407;
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2431;
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2410;
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2397;
+   public static final ClientPacket field2187;
    @ObfuscatedName("ay")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2434;
-   @ObfuscatedName("bm")
+   public static final ClientPacket field2188;
+   @ObfuscatedName("an")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2435;
-   @ObfuscatedName("bx")
+   public static final ClientPacket field2189;
+   @ObfuscatedName("as")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2455;
-   @ObfuscatedName("bl")
+   public static final ClientPacket field2168;
+   @ObfuscatedName("aw")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2437;
-   @ObfuscatedName("bf")
+   public static final ClientPacket field2191;
+   @ObfuscatedName("ag")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2438;
-   @ObfuscatedName("bp")
+   public static final ClientPacket field2192;
+   @ObfuscatedName("ah")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2439;
-   @ObfuscatedName("bs")
+   public static final ClientPacket field2193;
+   @ObfuscatedName("az")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2404;
-   @ObfuscatedName("bu")
+   public static final ClientPacket field2196;
+   @ObfuscatedName("ao")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2394;
-   @ObfuscatedName("br")
+   public static final ClientPacket field2195;
+   @ObfuscatedName("ap")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2442;
-   @ObfuscatedName("bk")
+   public static final ClientPacket field2159;
+   @ObfuscatedName("af")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2443;
-   @ObfuscatedName("bn")
+   public static final ClientPacket field2197;
+   @ObfuscatedName("am")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2444;
-   @ObfuscatedName("bj")
+   public static final ClientPacket field2170;
+   @ObfuscatedName("aq")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2473;
-   @ObfuscatedName("bo")
+   public static final ClientPacket field2240;
+   @ObfuscatedName("aj")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2446;
-   @ObfuscatedName("be")
+   public static final ClientPacket field2200;
+   @ObfuscatedName("ae")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2447;
-   @ObfuscatedName("bq")
+   public static final ClientPacket field2201;
+   @ObfuscatedName("au")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2448;
-   @ObfuscatedName("bh")
+   public static final ClientPacket field2202;
+   @ObfuscatedName("av")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2449;
-   @ObfuscatedName("bt")
+   public static final ClientPacket field2176;
+   @ObfuscatedName("ab")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2450;
-   @ObfuscatedName("bi")
+   public static final ClientPacket field2204;
+   @ObfuscatedName("aa")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2451;
+   public static final ClientPacket field2210;
+   @ObfuscatedName("ar")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2186;
+   @ObfuscatedName("ax")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2207;
+   @ObfuscatedName("al")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2208;
+   @ObfuscatedName("ak")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2230;
    @ObfuscatedName("bc")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2428;
-   @ObfuscatedName("bv")
+   public static final ClientPacket field2184;
+   @ObfuscatedName("bo")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2440;
+   public static final ClientPacket field2215;
+   @ObfuscatedName("bx")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2185;
+   @ObfuscatedName("be")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2205;
+   @ObfuscatedName("br")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2214;
+   @ObfuscatedName("bk")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2236;
+   @ObfuscatedName("bn")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2239;
+   @ObfuscatedName("bp")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2158;
+   @ObfuscatedName("bu")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2224;
    @ObfuscatedName("by")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2454;
-   @ObfuscatedName("bz")
+   public static final ClientPacket field2219;
+   @ObfuscatedName("bl")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2401;
-   @ObfuscatedName("bw")
+   public static final ClientPacket field2220;
+   @ObfuscatedName("bs")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2409;
+   public static final ClientPacket field2221;
+   @ObfuscatedName("bi")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2222;
    @ObfuscatedName("bb")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2457;
+   public static final ClientPacket field2223;
+   @ObfuscatedName("bt")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2167;
+   @ObfuscatedName("bm")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2198;
+   @ObfuscatedName("bw")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2194;
+   @ObfuscatedName("bv")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2227;
+   @ObfuscatedName("bf")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2228;
+   @ObfuscatedName("bj")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2229;
    @ObfuscatedName("ba")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2389;
-   @ObfuscatedName("bd")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2452;
+   public static final ClientPacket field2245;
    @ObfuscatedName("bg")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2460;
-   @ObfuscatedName("cd")
+   public static final ClientPacket field2231;
+   @ObfuscatedName("bh")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2480;
-   @ObfuscatedName("cf")
+   public static final ClientPacket field2232;
+   @ObfuscatedName("bd")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2462;
-   @ObfuscatedName("ce")
+   public static final ClientPacket field2233;
+   @ObfuscatedName("bz")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2463;
-   @ObfuscatedName("cl")
+   public static final ClientPacket field2234;
+   @ObfuscatedName("bq")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2458;
-   @ObfuscatedName("cg")
+   public static final ClientPacket field2235;
+   @ObfuscatedName("cq")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2465;
-   @ObfuscatedName("cb")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2466;
-   @ObfuscatedName("cv")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2467;
-   @ObfuscatedName("ck")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2383;
-   @ObfuscatedName("cu")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2469;
-   @ObfuscatedName("cm")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2470;
-   @ObfuscatedName("cw")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2471;
+   public static final ClientPacket field2190;
    @ObfuscatedName("ci")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2424;
-   @ObfuscatedName("cx")
+   public static final ClientPacket field2237;
+   @ObfuscatedName("cn")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2436;
-   @ObfuscatedName("cs")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2474;
-   @ObfuscatedName("cc")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2475;
-   @ObfuscatedName("ca")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2476;
-   @ObfuscatedName("ch")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2385;
-   @ObfuscatedName("cy")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2429;
-   @ObfuscatedName("cr")
-   @ObfuscatedSignature(
-      signature = "Lfl;"
-   )
-   public static final ClientPacket field2479;
+   public static final ClientPacket field2199;
    @ObfuscatedName("ct")
    @ObfuscatedSignature(
-      signature = "Lfl;"
+      signature = "Lfy;"
    )
-   public static final ClientPacket field2477;
+   public static final ClientPacket field2179;
+   @ObfuscatedName("cw")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2212;
+   @ObfuscatedName("cf")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2241;
+   @ObfuscatedName("cs")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2242;
+   @ObfuscatedName("ce")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2243;
    @ObfuscatedName("co")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2244;
+   @ObfuscatedName("cj")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2217;
+   @ObfuscatedName("cp")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2246;
+   @ObfuscatedName("ck")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2247;
+   @ObfuscatedName("ca")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2248;
+   @ObfuscatedName("cm")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2209;
+   @ObfuscatedName("cb")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2250;
+   @ObfuscatedName("cg")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2251;
+   @ObfuscatedName("cl")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2252;
+   @ObfuscatedName("cc")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2253;
+   @ObfuscatedName("cy")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2254;
+   @ObfuscatedName("ch")
+   @ObfuscatedSignature(
+      signature = "Lfy;"
+   )
+   public static final ClientPacket field2255;
+   @ObfuscatedName("cv")
    @ObfuscatedGetter(
-      intValue = 1323500239
+      intValue = 839540515
    )
    @Export("packetId")
    final int packetId;
-   @ObfuscatedName("cq")
+   @ObfuscatedName("cz")
    @ObfuscatedGetter(
-      intValue = -1084298517
+      intValue = 346528363
    )
    @Export("packetLength")
    final int packetLength;
 
    static {
-      field2400 = new ClientPacket(0, 16);
-      field2384 = new ClientPacket(1, -2);
-      field2459 = new ClientPacket(2, -1);
-      field2386 = new ClientPacket(3, 3);
-      field2387 = new ClientPacket(4, 3);
-      field2433 = new ClientPacket(5, 4);
-      field2416 = new ClientPacket(6, 7);
-      field2390 = new ClientPacket(7, -2);
-      field2391 = new ClientPacket(8, 3);
-      field2392 = new ClientPacket(9, -1);
-      field2393 = new ClientPacket(10, 15);
-      field2453 = new ClientPacket(11, 7);
-      field2395 = new ClientPacket(12, -1);
-      field2396 = new ClientPacket(13, -1);
-      field2478 = new ClientPacket(14, 8);
-      field2456 = new ClientPacket(15, 14);
-      field2399 = new ClientPacket(16, 7);
-      field2468 = new ClientPacket(17, 8);
-      field2422 = new ClientPacket(18, 8);
-      field2402 = new ClientPacket(19, 4);
-      field2403 = new ClientPacket(20, 8);
-      field2472 = new ClientPacket(21, 3);
-      field2405 = new ClientPacket(22, 6);
-      field2441 = new ClientPacket(23, 11);
-      field2482 = new ClientPacket(24, 0);
-      field2408 = new ClientPacket(25, 1);
-      field2413 = new ClientPacket(26, -1);
-      field2464 = new ClientPacket(27, 0);
-      field2411 = new ClientPacket(28, 10);
-      field2412 = new ClientPacket(29, 2);
-      field2419 = new ClientPacket(30, 15);
-      field2414 = new ClientPacket(31, -1);
-      field2415 = new ClientPacket(32, -1);
-      field2430 = new ClientPacket(33, 8);
-      field2406 = new ClientPacket(34, 9);
-      field2418 = new ClientPacket(35, 8);
-      field2461 = new ClientPacket(36, 13);
-      field2420 = new ClientPacket(37, 3);
-      field2421 = new ClientPacket(38, 8);
-      field2398 = new ClientPacket(39, -1);
-      field2423 = new ClientPacket(40, 9);
-      field2445 = new ClientPacket(41, 8);
-      field2425 = new ClientPacket(42, 3);
-      field2426 = new ClientPacket(43, 8);
-      field2427 = new ClientPacket(44, 11);
-      field2388 = new ClientPacket(45, 13);
-      field2417 = new ClientPacket(46, 8);
-      field2407 = new ClientPacket(47, 3);
-      field2431 = new ClientPacket(48, 3);
-      field2410 = new ClientPacket(49, 4);
-      field2397 = new ClientPacket(50, -1);
-      field2434 = new ClientPacket(51, -1);
-      field2435 = new ClientPacket(52, 13);
-      field2455 = new ClientPacket(53, 2);
-      field2437 = new ClientPacket(54, 7);
-      field2438 = new ClientPacket(55, 2);
-      field2439 = new ClientPacket(56, 8);
-      field2404 = new ClientPacket(57, 5);
-      field2394 = new ClientPacket(58, 7);
-      field2442 = new ClientPacket(59, 9);
-      field2443 = new ClientPacket(60, 7);
-      field2444 = new ClientPacket(61, 16);
-      field2473 = new ClientPacket(62, 3);
-      field2446 = new ClientPacket(63, 8);
-      field2447 = new ClientPacket(64, 6);
-      field2448 = new ClientPacket(65, 8);
-      field2449 = new ClientPacket(66, 8);
-      field2450 = new ClientPacket(67, -1);
-      field2451 = new ClientPacket(68, 7);
-      field2428 = new ClientPacket(69, 0);
-      field2440 = new ClientPacket(70, 8);
-      field2454 = new ClientPacket(71, 3);
-      field2401 = new ClientPacket(72, 3);
-      field2409 = new ClientPacket(73, 4);
-      field2457 = new ClientPacket(74, 9);
-      field2389 = new ClientPacket(75, 2);
-      field2452 = new ClientPacket(76, 0);
-      field2460 = new ClientPacket(77, 4);
-      field2480 = new ClientPacket(78, -1);
-      field2462 = new ClientPacket(79, -1);
-      field2463 = new ClientPacket(80, 8);
-      field2458 = new ClientPacket(81, 3);
-      field2465 = new ClientPacket(82, 16);
-      field2466 = new ClientPacket(83, 7);
-      field2467 = new ClientPacket(84, 7);
-      field2383 = new ClientPacket(85, 8);
-      field2469 = new ClientPacket(86, 7);
-      field2470 = new ClientPacket(87, -1);
-      field2471 = new ClientPacket(88, -1);
-      field2424 = new ClientPacket(89, 3);
-      field2436 = new ClientPacket(90, 8);
-      field2474 = new ClientPacket(91, 3);
-      field2475 = new ClientPacket(92, -1);
-      field2476 = new ClientPacket(93, -1);
-      field2385 = new ClientPacket(94, -2);
-      field2429 = new ClientPacket(95, 8);
-      field2479 = new ClientPacket(96, 8);
-      field2477 = new ClientPacket(97, 0);
+      field2257 = new ClientPacket(0, 7);
+      field2203 = new ClientPacket(1, 3);
+      field2160 = new ClientPacket(2, 3);
+      field2161 = new ClientPacket(3, 9);
+      field2162 = new ClientPacket(4, 4);
+      field2163 = new ClientPacket(5, -1);
+      field2164 = new ClientPacket(6, 3);
+      field2165 = new ClientPacket(7, 4);
+      field2206 = new ClientPacket(8, 5);
+      field2169 = new ClientPacket(9, 10);
+      field2182 = new ClientPacket(10, -1);
+      field2213 = new ClientPacket(11, 3);
+      field2238 = new ClientPacket(12, 8);
+      field2171 = new ClientPacket(13, 8);
+      field2172 = new ClientPacket(14, 8);
+      field2216 = new ClientPacket(15, 3);
+      field2174 = new ClientPacket(16, 8);
+      field2175 = new ClientPacket(17, 7);
+      field2226 = new ClientPacket(18, 8);
+      field2177 = new ClientPacket(19, 8);
+      field2178 = new ClientPacket(20, 8);
+      field2211 = new ClientPacket(21, 7);
+      field2180 = new ClientPacket(22, 3);
+      field2181 = new ClientPacket(23, 11);
+      field2218 = new ClientPacket(24, 3);
+      field2183 = new ClientPacket(25, 0);
+      field2225 = new ClientPacket(26, 6);
+      field2173 = new ClientPacket(27, 7);
+      field2249 = new ClientPacket(28, -1);
+      field2187 = new ClientPacket(29, 8);
+      field2188 = new ClientPacket(30, 7);
+      field2189 = new ClientPacket(31, 3);
+      field2168 = new ClientPacket(32, 7);
+      field2191 = new ClientPacket(33, 7);
+      field2192 = new ClientPacket(34, 3);
+      field2193 = new ClientPacket(35, 6);
+      field2196 = new ClientPacket(36, 8);
+      field2195 = new ClientPacket(37, 7);
+      field2159 = new ClientPacket(38, 0);
+      field2197 = new ClientPacket(39, -2);
+      field2170 = new ClientPacket(40, 7);
+      field2240 = new ClientPacket(41, 0);
+      field2200 = new ClientPacket(42, 2);
+      field2201 = new ClientPacket(43, -1);
+      field2202 = new ClientPacket(44, 15);
+      field2176 = new ClientPacket(45, -1);
+      field2204 = new ClientPacket(46, 14);
+      field2210 = new ClientPacket(47, -1);
+      field2186 = new ClientPacket(48, 0);
+      field2207 = new ClientPacket(49, -1);
+      field2208 = new ClientPacket(50, -2);
+      field2230 = new ClientPacket(51, 8);
+      field2184 = new ClientPacket(52, 8);
+      field2215 = new ClientPacket(53, 8);
+      field2185 = new ClientPacket(54, 3);
+      field2205 = new ClientPacket(55, -2);
+      field2214 = new ClientPacket(56, -1);
+      field2236 = new ClientPacket(57, 2);
+      field2239 = new ClientPacket(58, -1);
+      field2158 = new ClientPacket(59, 8);
+      field2224 = new ClientPacket(60, 8);
+      field2219 = new ClientPacket(61, 3);
+      field2220 = new ClientPacket(62, 8);
+      field2221 = new ClientPacket(63, 8);
+      field2222 = new ClientPacket(64, 13);
+      field2223 = new ClientPacket(65, 11);
+      field2167 = new ClientPacket(66, 4);
+      field2198 = new ClientPacket(67, 8);
+      field2194 = new ClientPacket(68, 16);
+      field2227 = new ClientPacket(69, 16);
+      field2228 = new ClientPacket(70, 4);
+      field2229 = new ClientPacket(71, 8);
+      field2245 = new ClientPacket(72, 8);
+      field2231 = new ClientPacket(73, 4);
+      field2232 = new ClientPacket(74, 7);
+      field2233 = new ClientPacket(75, 3);
+      field2234 = new ClientPacket(76, 9);
+      field2235 = new ClientPacket(77, 3);
+      field2190 = new ClientPacket(78, -1);
+      field2237 = new ClientPacket(79, -1);
+      field2199 = new ClientPacket(80, 8);
+      field2179 = new ClientPacket(81, 3);
+      field2212 = new ClientPacket(82, 9);
+      field2241 = new ClientPacket(83, 2);
+      field2242 = new ClientPacket(84, 15);
+      field2243 = new ClientPacket(85, -1);
+      field2244 = new ClientPacket(86, 9);
+      field2217 = new ClientPacket(87, 0);
+      field2246 = new ClientPacket(88, 1);
+      field2247 = new ClientPacket(89, 13);
+      field2248 = new ClientPacket(90, -1);
+      field2209 = new ClientPacket(91, 16);
+      field2250 = new ClientPacket(92, -1);
+      field2251 = new ClientPacket(93, -1);
+      field2252 = new ClientPacket(94, 2);
+      field2253 = new ClientPacket(95, -1);
+      field2254 = new ClientPacket(96, 13);
+      field2255 = new ClientPacket(97, -1);
    }
 
    ClientPacket(int var1, int var2) {
@@ -616,35 +617,60 @@ public class ClientPacket implements class179 {
       this.packetLength = var2;
    }
 
-   @ObfuscatedName("x")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(ILcr;ZI)I",
-      garbageValue = "92914245"
+      signature = "(B)V",
+      garbageValue = "31"
    )
-   static int method3434(int var0, Script var1, boolean var2) {
-      Widget var3;
-      if(var0 >= 2000) {
-         var0 -= 1000;
-         var3 = class44.getWidget(class81.intStack[--WorldComparator.intStackSize]);
-      } else {
-         var3 = var2?class81.field1285:Signlink.field2218;
+   static void method3462() {
+      for(class68 var0 = (class68)class68.field1002.getFront(); var0 != null; var0 = (class68)class68.field1002.getNext()) {
+         if(var0.field999 != null) {
+            var0.method1730();
+         }
       }
 
-      if(var0 == 1927) {
-         if(class81.field1288 >= 10) {
-            throw new RuntimeException();
-         } else if(var3.onResizeListener == null) {
-            return 0;
-         } else {
-            ScriptEvent var4 = new ScriptEvent();
-            var4.widget = var3;
-            var4.objs = var3.onResizeListener;
-            var4.field806 = class81.field1288 + 1;
-            Client.field1066.addFront(var4);
-            return 1;
-         }
-      } else {
-         return 2;
+   }
+
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      signature = "(I)V",
+      garbageValue = "81953750"
+   )
+   static void method3460() {
+      Iterator var0 = class83.messages.iterator();
+
+      while(var0.hasNext()) {
+         MessageNode var1 = (MessageNode)var0.next();
+         var1.method1098();
       }
+
+   }
+
+   @ObfuscatedName("j")
+   @ObfuscatedSignature(
+      signature = "(ILiv;IIIZI)V",
+      garbageValue = "-1289593441"
+   )
+   public static void method3459(int var0, IndexDataBase var1, int var2, int var3, int var4, boolean var5) {
+      class217.field2486 = 1;
+      class26.field236 = var1;
+      WorldMapDecoration.field167 = var2;
+      class217.field2487 = var3;
+      class21.field185 = var4;
+      class178.field2317 = var5;
+      class308.field3746 = var0;
+   }
+
+   @ObfuscatedName("ha")
+   @ObfuscatedSignature(
+      signature = "(IIB)Lfu;",
+      garbageValue = "0"
+   )
+   static class166 method3461(int var0, int var1) {
+      Client.field862.field2066 = var0;
+      Client.field862.field2067 = var1;
+      Client.field862.field2070 = 1;
+      Client.field862.field2069 = 1;
+      return Client.field862;
    }
 }

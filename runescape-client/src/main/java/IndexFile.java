@@ -9,30 +9,30 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("ff")
 @Implements("IndexFile")
 public final class IndexFile {
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @Export("IndexStore_buffer")
    static byte[] IndexStore_buffer;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "Ldy;"
+      signature = "Ldd;"
    )
    @Export("dataFile")
    CacheFile dataFile;
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "Ldy;"
+      signature = "Ldd;"
    )
    @Export("indexFile")
    CacheFile indexFile;
-   @ObfuscatedName("d")
+   @ObfuscatedName("b")
    @ObfuscatedGetter(
-      intValue = -1621000493
+      intValue = 69040701
    )
    @Export("index")
    int index;
-   @ObfuscatedName("h")
+   @ObfuscatedName("f")
    @ObfuscatedGetter(
-      intValue = -1067051891
+      intValue = 1834258411
    )
    @Export("maxSize")
    int maxSize;
@@ -42,7 +42,7 @@ public final class IndexFile {
    }
 
    @ObfuscatedSignature(
-      signature = "(ILdy;Ldy;I)V"
+      signature = "(ILdd;Ldd;I)V"
    )
    public IndexFile(int var1, CacheFile var2, CacheFile var3, int var4) {
       this.dataFile = null;
@@ -54,10 +54,10 @@ public final class IndexFile {
       this.maxSize = var4;
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(II)[B",
-      garbageValue = "-1580679217"
+      signature = "(IB)[B",
+      garbageValue = "127"
    )
    @Export("read")
    public byte[] read(int var1) {
@@ -130,10 +130,10 @@ public final class IndexFile {
       }
    }
 
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedSignature(
-      signature = "(I[BII)Z",
-      garbageValue = "-1692563454"
+      signature = "(I[BIB)Z",
+      garbageValue = "-8"
    )
    @Export("write")
    public boolean write(int var1, byte[] var2, int var3) {
@@ -152,10 +152,10 @@ public final class IndexFile {
       }
    }
 
-   @ObfuscatedName("t")
+   @ObfuscatedName("q")
    @ObfuscatedSignature(
-      signature = "(I[BIZI)Z",
-      garbageValue = "-1703245934"
+      signature = "(I[BIZB)Z",
+      garbageValue = "-14"
    )
    @Export("write0")
    boolean write0(int var1, byte[] var2, int var3, boolean var4) {
@@ -197,7 +197,7 @@ public final class IndexFile {
 
             while(true) {
                if(var7 < var3) {
-                  label145: {
+                  label146: {
                      int var9 = 0;
                      int var14;
                      if(var4) {
@@ -206,14 +206,14 @@ public final class IndexFile {
                         try {
                            this.dataFile.read(IndexStore_buffer, 0, 8);
                         } catch (EOFException var16) {
-                           break label145;
+                           break label146;
                         }
 
                         var14 = (IndexStore_buffer[1] & 255) + ((IndexStore_buffer[0] & 255) << 8);
                         int var11 = (IndexStore_buffer[3] & 255) + ((IndexStore_buffer[2] & 255) << 8);
                         var9 = ((IndexStore_buffer[5] & 255) << 8) + ((IndexStore_buffer[4] & 255) << 16) + (IndexStore_buffer[6] & 255);
                         int var12 = IndexStore_buffer[7] & 255;
-                        if(var14 != var1 || var11 != var8 || var12 != this.index) {
+                        if(var14 != var1 || var8 != var11 || var12 != this.index) {
                            var10000 = false;
                            return var10000;
                         }
@@ -231,7 +231,7 @@ public final class IndexFile {
                            ++var9;
                         }
 
-                        if(var9 == var6) {
+                        if(var6 == var9) {
                            ++var9;
                         }
                      }
@@ -272,25 +272,41 @@ public final class IndexFile {
       }
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("jj")
    @ObfuscatedSignature(
-      signature = "(II)Ljk;",
-      garbageValue = "-698481764"
+      signature = "(Lhl;B)Lhl;",
+      garbageValue = "48"
    )
-   @Export("getKitDefinition")
-   public static KitDefinition getKitDefinition(int var0) {
-      KitDefinition var1 = (KitDefinition)KitDefinition.identKits.get((long)var0);
-      if(var1 != null) {
-         return var1;
+   static Widget method3387(Widget var0) {
+      Widget var2 = var0;
+      int var3 = PlayerComposition.method4514(AbstractSoundSystem.getWidgetClickMask(var0));
+      Widget var1;
+      if(var3 == 0) {
+         var1 = null;
       } else {
-         byte[] var2 = KitDefinition.identKit_ref.getConfigData(3, var0);
-         var1 = new KitDefinition();
-         if(var2 != null) {
-            var1.decode(new Buffer(var2));
-         }
+         int var4 = 0;
 
-         KitDefinition.identKits.put(var1, (long)var0);
-         return var1;
+         while(true) {
+            if(var4 >= var3) {
+               var1 = var2;
+               break;
+            }
+
+            var2 = OwnWorldComparator.getWidget(var2.parentId);
+            if(var2 == null) {
+               var1 = null;
+               break;
+            }
+
+            ++var4;
+         }
       }
+
+      Widget var5 = var1;
+      if(var1 == null) {
+         var5 = var0.dragParent;
+      }
+
+      return var5;
    }
 }

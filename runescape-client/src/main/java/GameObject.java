@@ -4,131 +4,96 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eb")
+@ObfuscatedName("eg")
 @Implements("GameObject")
 public final class GameObject {
-   @ObfuscatedName("gf")
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = -905114669
-   )
-   @Export("cameraZ")
-   static int cameraZ;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = 1716707329
+      intValue = 275839015
    )
    @Export("plane")
    int plane;
-   @ObfuscatedName("k")
-   @ObfuscatedGetter(
-      intValue = 355953863
-   )
-   @Export("height")
-   int height;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      intValue = -578308445
-   )
-   @Export("x")
-   int x;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = -655554511
-   )
-   @Export("y")
-   int y;
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      signature = "Led;"
-   )
-   @Export("renderable")
-   public Renderable renderable;
    @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = 1891180903
+      intValue = 668222039
    )
    @Export("orientation")
    int orientation;
-   @ObfuscatedName("z")
+   @ObfuscatedName("q")
    @ObfuscatedGetter(
-      intValue = 1077887321
+      intValue = -1206458065
+   )
+   @Export("height")
+   int height;
+   @ObfuscatedName("b")
+   @ObfuscatedGetter(
+      intValue = 1820642471
+   )
+   @Export("x")
+   int x;
+   @ObfuscatedName("f")
+   @ObfuscatedGetter(
+      intValue = -1191748071
+   )
+   @Export("y")
+   int y;
+   @ObfuscatedName("n")
+   @ObfuscatedSignature(
+      signature = "Ldz;"
+   )
+   @Export("renderable")
+   public Renderable renderable;
+   @ObfuscatedName("h")
+   @ObfuscatedGetter(
+      intValue = 735631027
    )
    @Export("relativeX")
    int relativeX;
-   @ObfuscatedName("i")
+   @ObfuscatedName("x")
    @ObfuscatedGetter(
-      intValue = 1705717825
+      intValue = -387468821
    )
    @Export("offsetX")
    int offsetX;
-   @ObfuscatedName("u")
+   @ObfuscatedName("j")
    @ObfuscatedGetter(
-      intValue = 2017876587
+      intValue = -1306674737
    )
    @Export("relativeY")
    int relativeY;
-   @ObfuscatedName("x")
+   @ObfuscatedName("a")
    @ObfuscatedGetter(
-      intValue = 1243283353
+      intValue = -1663945835
    )
    @Export("offsetY")
    int offsetY;
-   @ObfuscatedName("y")
+   @ObfuscatedName("l")
    @ObfuscatedGetter(
-      intValue = 1689595723
+      intValue = -2079010547
    )
    @Export("drawPriority")
    int drawPriority;
-   @ObfuscatedName("a")
+   @ObfuscatedName("d")
    @ObfuscatedGetter(
-      intValue = -1774788285
+      intValue = -37820759
    )
    @Export("cycle")
    int cycle;
-   @ObfuscatedName("w")
+   @ObfuscatedName("s")
    @ObfuscatedGetter(
-      intValue = -2055602271
+      longValue = -4805703617808557861L
    )
    @Export("hash")
-   public int hash;
-   @ObfuscatedName("n")
+   public long hash;
+   @ObfuscatedName("p")
    @ObfuscatedGetter(
-      intValue = 2062036631
+      intValue = -1655703577
    )
    @Export("flags")
    int flags;
 
    GameObject() {
-      this.hash = 0;
+      this.hash = 0L;
       this.flags = 0;
-   }
-
-   @ObfuscatedName("fx")
-   @ObfuscatedSignature(
-      signature = "(Lbz;III)V",
-      garbageValue = "-841453657"
-   )
-   static void method3083(Player var0, int var1, int var2) {
-      if(var0.animation == var1 && var1 != -1) {
-         int var3 = CombatInfo1.getAnimation(var1).replyMode;
-         if(var3 == 1) {
-            var0.actionFrame = 0;
-            var0.actionFrameCycle = 0;
-            var0.actionAnimationDisable = var2;
-            var0.field1193 = 0;
-         }
-
-         if(var3 == 2) {
-            var0.field1193 = 0;
-         }
-      } else if(var1 == -1 || var0.animation == -1 || CombatInfo1.getAnimation(var1).forcedPriority >= CombatInfo1.getAnimation(var0.animation).forcedPriority) {
-         var0.animation = var1;
-         var0.actionFrame = 0;
-         var0.actionFrameCycle = 0;
-         var0.actionAnimationDisable = var2;
-         var0.field1193 = 0;
-         var0.field1216 = var0.queueSize;
-      }
-
    }
 }

@@ -4,93 +4,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cc")
+@ObfuscatedName("cn")
 @Implements("Item")
 public final class Item extends Renderable {
-   @ObfuscatedName("cw")
+   @ObfuscatedName("h")
+   @Export("validInterfaces")
+   static boolean[] validInterfaces;
+   @ObfuscatedName("w")
    @ObfuscatedGetter(
-      intValue = 2021382965
-   )
-   @Export("currentPressedKey")
-   public static int currentPressedKey;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = -880558037
+      intValue = 577260357
    )
    @Export("id")
    int id;
-   @ObfuscatedName("k")
+   @ObfuscatedName("m")
    @ObfuscatedGetter(
-      intValue = -1734971795
+      intValue = 70858691
    )
    @Export("quantity")
    int quantity;
 
-   @ObfuscatedName("u")
+   @ObfuscatedName("s")
    @ObfuscatedSignature(
-      signature = "(I)Lei;",
-      garbageValue = "1329079562"
+      signature = "(B)Ldk;",
+      garbageValue = "111"
    )
    protected final Model getModel() {
-      return class47.getItemDefinition(this.id).getModel(this.quantity);
+      return class120.getItemDefinition(this.id).getModel(this.quantity);
    }
 
-   @ObfuscatedName("o")
+   @ObfuscatedName("w")
    @ObfuscatedSignature(
-      signature = "(Ljf;Ljf;Ljf;I)V",
-      garbageValue = "2123410925"
+      signature = "(I[BLff;I)V",
+      garbageValue = "494698684"
    )
-   public static void method1951(IndexDataBase var0, IndexDataBase var1, IndexDataBase var2) {
-      Sequence.seq_ref = var0;
-      Sequence.skel_ref = var1;
-      Sequence.skin_ref = var2;
-   }
-
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(IB)Lef;",
-      garbageValue = "-10"
-   )
-   @Export("getFrames")
-   static Frames getFrames(int var0) {
-      Frames var1 = (Frames)Sequence.skeletons.get((long)var0);
-      if(var1 != null) {
-         return var1;
-      } else {
-         IndexDataBase var3 = Sequence.skel_ref;
-         IndexDataBase var4 = Sequence.skin_ref;
-         boolean var5 = true;
-         int[] var6 = var3.getChilds(var0);
-
-         for(int var7 = 0; var7 < var6.length; ++var7) {
-            byte[] var8 = var3.getChild(var0, var6[var7]);
-            if(var8 == null) {
-               var5 = false;
-            } else {
-               int var9 = (var8[0] & 255) << 8 | var8[1] & 255;
-               byte[] var10 = var4.getChild(var9, 0);
-               if(var10 == null) {
-                  var5 = false;
-               }
-            }
-         }
-
-         Frames var2;
-         if(!var5) {
-            var2 = null;
-         } else {
-            try {
-               var2 = new Frames(var3, var4, var0, false);
-            } catch (Exception var12) {
-               var2 = null;
-            }
-         }
-
-         if(var2 != null) {
-            Sequence.skeletons.put(var2, (long)var0);
-         }
-
-         return var2;
+   static void method1906(int var0, byte[] var1, IndexFile var2) {
+      FileSystem var3 = new FileSystem();
+      var3.type = 0;
+      var3.hash = (long)var0;
+      var3.field3165 = var1;
+      var3.index = var2;
+      Deque var4 = IndexStoreActionHandler.IndexStoreActionHandler_requestQueue;
+      synchronized(IndexStoreActionHandler.IndexStoreActionHandler_requestQueue) {
+         IndexStoreActionHandler.IndexStoreActionHandler_requestQueue.addFront(var3);
       }
+
+      class158.method3313();
    }
 }
